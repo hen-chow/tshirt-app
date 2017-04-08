@@ -1,0 +1,3 @@
+class DesignsController < ApplicationController
+
+end
