@@ -1,1 +1,8 @@
-<h1>This works!</h1>
+<h1>Print your shirt</h1>
+
+<% @designs.each do |design|%>
+  <div class="entry">
+    <%= image_tag(design.image_src) %>
+    <h3><%= design.name %></h3>
+  </div>
+<% end %>
