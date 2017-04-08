@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :line_items
 
   get "store/index"
-  resources :products, only: [:new]
+  resources :products
   # The root of site routed with store/index
   root "store#index", as: "store"
 end
