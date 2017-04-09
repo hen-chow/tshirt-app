@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+ h1{
+   color: green;
+   margin-top: 0;
+   padding-right: 15px;
+   padding-left: 15px
+ }
+ ul.nav li {
+   border-right: 1px solid #d9d9d9;
+   float:  right;
+}
+ul.nav li.first {
+   border-left: 1px solid #d9d9d9;
+}
+ul.nav a, ul.nav a:visited {
+   padding: 5px 5px 5px 15px;
+   display: block;
+   text-decoration: none;
+   background: #d9d9d9;
+   color: #000;
+}
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
+   background: gray;
+   color: #666;
+}
+ul.nav li.active {
+   background: green;
+   color: #d9d9d9;
+}

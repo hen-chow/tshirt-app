@@ -26,9 +26,9 @@ product_10 = Product.create(colour:'yellow', size:'S', price:20.99, stock_level:
 product_11 = Product.create(colour:'yellow', size:'M', price:22.99, stock_level:50)
 product_12 = Product.create(colour:'yellow', size:'L', price:20.99, stock_level:50)
 
-design_1 = Design.create(name:'des1', colour:'bw', length:'300', width:'300', img_src:'', predesign:'true', user_id:user_1.id)
-design_2 = Design.create(name:'des2', colour:'bw', length:'300', width:'300', img_src:'', predesign:'true', user_id:user_2.id)
-design_3 = Design.create(name:'des3', colour:'fullcolour', length:'300', width:'300', img_src:'', predesign:'true', user_id:user_3.id)
+design_1 = Design.create(name:'des1', colour:'bw', length:'300', width:'300', img_src:'/assets/des1.png', predesign:'true', user_id:user_1.id)
+design_2 = Design.create(name:'des2', colour:'bw', length:'300', width:'300', img_src:'/assets/des2.png', predesign:'true', user_id:user_2.id)
+design_3 = Design.create(name:'des3', colour:'fullcolour', length:'300', width:'300', img_src:'/assets/des3.png', predesign:'true', user_id:user_3.id)
 design_4 = Design.create(name:'des4', colour:'bw', length:'300', width:'300', img_src:'', predesign:'false', user_id:user_4.id)
 design_5 = Design.create(name:'des5', colour:'fullcolour', length:'300', width:'300', img_src:'', predesign:'false', user_id:user_5.id)
 
