@@ -7,6 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Begin processing seed file"
 
+User.destroy_all
+Product.destroy_all
+Design.destroy_all
+
 user_1 = User.create(name:'Jin', email:'jin@wdi.com', password:'pass123')
 user_2 = User.create(name:'Diego', email:'diego@wdi.com', password:'pass456')
 user_3 = User.create(name:'Peach', email:'peach@wdi.com', password:'pass000')

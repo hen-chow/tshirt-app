@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :sessions
 
   get "store/index"
-  resources :products
+  resources :products, only: [:new]
   # The root of site routed with store/index
   root "store#index", as: "store"
 
