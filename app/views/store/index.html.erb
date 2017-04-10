@@ -72,6 +72,7 @@
       var width = $(".design_img").css("width");
       var height = $(".design_img").css("height");
       var widthRatio = (parseInt(width.substr(0, width.length - 2)) / parseInt(tshirtWidth.substr(0, tshirtWidth.length - 2))) * 100
+      var heightRatio = (parseInt(height.substr(0, height.length - 2)) / parseInt(tshirtHeight.substr(0, tshirtHeight.length - 2))) * 100
       // var heightRatio = (height / tshirtHeight) * 100
 
       // str.substr(0, str.length - 2)
@@ -80,7 +81,7 @@
       console.log(tshirtWidth)
       console.log(tshirtHeight)
       console.log(widthRatio)
-      // console.log(heightRatio)
+      console.log(heightRatio)
 
     });
   })
