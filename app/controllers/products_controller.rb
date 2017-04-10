@@ -15,10 +15,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show
-    @products = Product.all
-    
-  end
+  # def show
+  #   @products = Product.all
+  # end
   #
   # def updated
   # end
