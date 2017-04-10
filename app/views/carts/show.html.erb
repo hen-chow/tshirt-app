@@ -22,7 +22,7 @@
         <td><%= f.submit 'Update Qty' %></td>
       <% end %>
       <td><%= item.qty %> &times;</td>
-      <td><%= item.product.name %></td>
+      <td><%= item.product.colour %></td>
       <td class="item_price"><%= number_to_currency(item.total_price) %></td>
       <td><%= button_to 'Delete Item', item, method: :delete, confirm: 'Are you sure?' %></td>
     </tr>

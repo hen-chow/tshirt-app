@@ -45,16 +45,18 @@ order_3 = Order.create(user_id:user_3.id, delivery_cost:10, delivery_address: 'G
 order_4 = Order.create(user_id:user_4.id, delivery_cost:10, delivery_address: 'Market Street Sydney')
 order_5 = Order.create(user_id:user_5.id, delivery_cost:10, delivery_address: 'Pitt Street Sydney')
 
-lineItem_1 = LineItem.create(product_id:product_1.id, design_id:design_1.id, qty:3, order_id:order_1.id)
-lineItem_2 = LineItem.create(product_id:product_2.id, design_id:design_2.id, qty:1, order_id:order_2.id)
-lineItem_3 = LineItem.create(product_id:product_3.id, design_id:design_3.id, qty:3, order_id:order_3.id)
-lineItem_4 = LineItem.create(product_id:product_4.id, design_id:design_4.id, qty:3, order_id:order_4.id)
-lineItem_5 = LineItem.create(product_id:product_5.id, design_id:design_5.id, qty:1, order_id:order_5.id)
-
 cart_1 = Cart.create(user_id:user_1.id)
 cart_2 = Cart.create(user_id:user_2.id)
 cart_3 = Cart.create(user_id:user_3.id)
 cart_4 = Cart.create(user_id:user_4.id)
 cart_5 = Cart.create(user_id:user_5.id)
+
+
+lineItem_1 = LineItem.create(product_id:product_1.id, design_id:design_1.id, qty:3, order_id:order_1.id, cart_id: cart_1.id )
+lineItem_2 = LineItem.create(product_id:product_2.id, design_id:design_2.id, qty:1, order_id:order_2.id, cart_id: cart_2.id)
+lineItem_3 = LineItem.create(product_id:product_3.id, design_id:design_3.id, qty:3, order_id:order_3.id, cart_id: cart_3.id)
+lineItem_4 = LineItem.create(product_id:product_4.id, design_id:design_4.id, qty:3, order_id:order_4.id, cart_id: cart_4.id)
+lineItem_5 = LineItem.create(product_id:product_5.id, design_id:design_5.id, qty:1, order_id:order_5.id, cart_id: cart_5.id)
+
 
 puts "Seed file now completed"
