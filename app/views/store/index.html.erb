@@ -10,31 +10,55 @@
       <tr>
         <td class="colour_thumbnail", id="<%= product.colour %>"><%= image_tag product.thumbnail, class: product.colour %></td>
       </tr>
+      <tr>
+        <td><%= number_to_currency(product.price) %></td>
+      </tr>
+      <tr>
+        <td>
+          <select name="size"> <!-- create Size dropdown menu -->
+            <% @sizes.each do |u| %>
+              <option value="<%= u %>"><%= u %></option>
+            <% end %>
+          </select>
+        </td>
+      </tr>
     </table>
   <% end %>
 <% end %>
+<%= button_to "Add to Cart"%> <!-- need to update the path and params for this button -->
+
 
 <% @designs.each do |design|%>
-
-<table>
-  <tr>
-    <td class="design_thumbnail"><%= image_tag design.img_src %></td>
-    <!-- <td><%= design.name %></td> -->
-  </tr>
-</table>
+  <table>
+    <tr>
+      <td class="design_thumbnail", src="<%= design.img_src %>", id="<%= design.id %>"><%= image_tag design.img_src %></td>
+      <!-- <td><%= design.name %></td> -->
+    </tr>
+  </table>
 <% end %>
+
+
 
 <script>
   $(document).ready(function(e){
-    $(".colour_thumbnail").on("click", function(e){
+    $(".colour_thumbnail").on("click", function(e){ // select shirt colour
       var colour = $(e.currentTarget).attr("id");
-    console.log(colour);
-  $("#tshirtTemplate").html("");
-  $("#tshirtTemplate").append($("<img>").attr("src", "/assets/"+colour+".png").attr("class", "tshirt"))
-
+      console.log(colour);
+      $("#tshirtTemplate").html("");
+      $("#tshirtTemplate").append($("<img>").attr("src", "/assets/" + colour + ".png").attr("class", "tshirt").attr("id", colour));
     });
 
+    $(".design_thumbnail").on("click", function(e){ // select design to apply on t-shirt
+      var designUrl = $(e.currentTarget).attr("src");
+      var design_id = $(e.currentTarget).attr("id");
+      console.log(design_id)
+      var $design = $("<img>").attr("src", designUrl).attr("id", design_id);
+      $design.css({
+        top: "30px",
+        left: "70px",
+        position: "absolute"
+      });
+      $("#tshirtTemplate").append($design);
+    })
   })
-
-
 </script>

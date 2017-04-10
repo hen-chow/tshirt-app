@@ -53,6 +53,7 @@ body {
 
 .tshirt {
   width: 400px;
+  position: relative;
 }
 
 .colour_thumbnail > img {
