@@ -38,8 +38,6 @@
   </table>
 <% end %>
 
-
-
 <script>
   $(document).ready(function(e){
     $(".colour_thumbnail").on("click", function(e){ // select shirt colour
@@ -55,7 +53,6 @@
       console.log(design_id)
       var $designImg = $("<img>").attr("src", designUrl).attr("class", "design_img").attr("id", design_id);
       var $designContainer = $("<div>").attr("class", "design_container").append($designImg);
-
       $designContainer.css({
         top: "30px",
         left: "70px",
@@ -64,7 +61,6 @@
       $(".main-container").append($designContainer);
       $($designContainer).draggable();
       $($designImg).resizable({aspectRatio: true});
-
 
     })
   })
