@@ -2,29 +2,16 @@
 
 <% @designs.each do |design|%>
   <div class="entry">
-    <%= image_tag(design.img_src) %>
+    <%= image_tag "design.img_src", class: "tshirt" %>
     <h3><%= design.name %></h3>
   </div>
-<% end %>
-
-<div id="tshirtTemplate">
+<!-- <div id="tshirtTemplate">
   <%= image_tag "/assets/tshirt_templ.png", class: "tshirt" %>
-</div>
-
-
-<div class="tshirtText">
-  <%= f.label :CreateText %><br>
-  <%= f.text_field :text %>
-</div>
-  <div class="action">
-    <%= f.submit %>
-</div>
-
+</div> -->
 
 <table>
-  <% @designs.each do |design|%>
 <tr>
-  <td><%= design.name</td>
+  <td><%= design.name %></td>
 </tr>
-
+<% end %>
 </table>
