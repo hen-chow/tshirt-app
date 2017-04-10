@@ -11,7 +11,7 @@
   <% if product.size === "S" %>
     <table>
       <tr>
-        <td class="colour_thumbnail", id="<%= product.colour %>"><%= image_tag product.thumbnail, class: product.colour %></td>
+        <td class="colour_thumbnail", id="<%= product.id %>", colour="<%= product.colour %>"><%= image_tag product.thumbnail, class: product.colour %></td>
       </tr>
   <% end %>
 <% end %>
@@ -20,11 +20,16 @@
       </tr>
       <tr>
         <td>
-          <select name="size"> <!-- create Size dropdown menu -->
+          <select class="size"> <!-- create Size dropdown menu -->
             <% @sizes.each do |u| %>
               <option value="<%= u %>"><%= u %></option>
             <% end %>
           </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Qty: <%= text_field_tag "qty" %>
         </td>
       </tr>
     </table>
@@ -42,20 +47,38 @@
 <% end %>
 
 <script>
+  var createLineItem = function(productId, designId, qty, top, left, widthRatio, heightRatio){
+    $.ajax({
+      url: "/line_items",
+      method: "POST",
+      dataType: "JSON",
+      data: {
+        product_id: productId,
+        design_id: designId,
+        qty: qty,
+        top: top,
+        left: left,
+        width_ratio: widthRatio,
+        height_ratio: heightRatio
+      }
+    });
+  }
+
   $(document).ready(function(){
-    $(".colour_thumbnail").on("click", function(e){ // select shirt colour
-      var colour = $(this).attr("id");
+    $(".colour_thumbnail").on("click", function(){ // select shirt colour
+      var colour = $(this).attr("colour");
+      var productId = $(this).attr("id");
       console.log(colour);
       $("#tshirtTemplate").html("");
-      $("#tshirtTemplate").append($("<img>").attr("src", "/assets/" + colour + ".png").attr("class", "tshirt").attr("id", colour));
+      $("#tshirtTemplate").append($("<img>").attr("src", "/assets/" + colour + ".png").attr("class", "tshirt").attr("id", productId ));
     });
 
     $(".design_thumbnail").on("click", function(){ // select design to apply on t-shirt
       $(".design_container").html("");
       var designUrl = $(this).attr("src");
-      var design_id = $(this).attr("id");
-      console.log(design_id)
-      var $designImg = $("<img>").attr("src", designUrl).attr("class", "design_img").attr("id", design_id);
+      var designId = $(this).attr("id");
+      console.log(designId)
+      var $designImg = $("<img>").attr("src", designUrl).attr("class", "design_img").attr("id", designId);
       var $designContainer = $("<div>").attr("class", "design_container").append($designImg);
       $designContainer.css({
         top: "30px",
@@ -68,24 +91,22 @@
     });
 
     $("button").on("click", function(){
-      var top = $(".tshirt").position().top - $(".design_container").position().top;
-      var left = $(".tshirt").position().left - $(".design_img").position().left;
+      var top = $(".design_container").position().top - $(".tshirt").position().top;
+      var left = $(".design_container").position().left - $(".tshirt").position().left;
       var tshirtWidth = $(".tshirt").css("width");
       var tshirtHeight = $(".tshirt").css("height");
       var width = $(".design_img").css("width");
       var height = $(".design_img").css("height");
-      var widthRatio = (parseInt(width.substr(0, width.length - 2)) / parseInt(tshirtWidth.substr(0, tshirtWidth.length - 2))) * 100
-      var heightRatio = (parseInt(height.substr(0, height.length - 2)) / parseInt(tshirtHeight.substr(0, tshirtHeight.length - 2))) * 100
-      // var heightRatio = (height / tshirtHeight) * 100
-
-      // str.substr(0, str.length - 2)
+      var widthRatio = (parseInt(width.substr(0, width.length - 2)) / parseInt(tshirtWidth.substr(0, tshirtWidth.length - 2))) * 100; // convert widths to integers and calculate ratios
+      var heightRatio = (parseInt(height.substr(0, height.length - 2)) / parseInt(tshirtHeight.substr(0, tshirtHeight.length - 2))) * 100 ;// convert heights to integers and calculate ratios
       console.log(top)
       console.log(left)
-      console.log(tshirtWidth)
-      console.log(tshirtHeight)
-      console.log(widthRatio)
-      console.log(heightRatio)
+      var productId = $(".tshirt").attr("id");
+      var designId = $(".design_img").attr("id");
+      var qty = $("#qty").val();
+      //var size = $(".size").val();
 
+      createLineItem(productId, designId, qty, top, left, widthRatio, heightRatio);
     });
   })
 </script>
