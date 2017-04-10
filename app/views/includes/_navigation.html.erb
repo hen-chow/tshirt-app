@@ -1,11 +1,12 @@
-<div id="navbar">
-    <ul class="nav">
-    <li>Design Your T-shirt<%= link_to root_path, class: "header item" do %></li>
-      <!--%= image_tag "assets/images/storelogo.png", class: "logo" %-->
-
-    <%end%>
-    <%= link_to "store", root_path, class: "item" %>
-    <%= link_to "Signup", sign_up_path, class: "item" %>
-    <%= link_to "Login", login_path, class: "item" %>
-    <%= link_to "Logout", log_out_path, class: "item", method: "delete" %>
+<div class="ui inverted blue menu">
+      <%= link_to store_index_path, class: "header item" do %>Home
+        <%= link_to "store", store_index_path, class: "item" %>
+        <%= link_to "Signup", signup_path, class: "item" %>
+        <%= link_to "Login", signin_path, class: "item" %>
+        <%= link_to "Logout", signout_path, class: "item", method: "delete" %>
+      <%end%>
 </div>
+  <!--div>
+
+      <%= image_tag "assets/images/storelogo.png", class: "logo" %>
+  </div-->
