@@ -1,12 +1,14 @@
-<div class="ui inverted blue menu">
-      <%= link_to store_index_path, class: "header item" do %>Home
-        <%= link_to "store", store_index_path, class: "item" %>
-        <%= link_to "Signup", signup_path, class: "item" %>
-        <%= link_to "Login", signin_path, class: "item" %>
-        <%= link_to "Logout", signout_path, class: "item", method: "delete" %>
-      <%end%>
-</div>
-  <!--div>
+<!--div>
+    <%= image_tag "logo.png", class: "logo" %>
+</div-->
+<div class="ui inverted segment">
 
-      <%= image_tag "assets/images/storelogo.png", class: "logo" %>
-  </div-->
+      <%= link_to store_index_path, class: "ui blue basic button" do %>Home
+
+        <%= link_to "store", store_index_path, class: "ui blue basic button" %>
+        <%= link_to "Signup", signup_path, class: "ui blue basic button" %>
+        <%= link_to "Login", signin_path, class: "ui blue basic button" %>
+        <%= link_to "Logout", signout_path, class: "ui blue basic button", method: "delete" %>
+      <%end%>
+
+</div>

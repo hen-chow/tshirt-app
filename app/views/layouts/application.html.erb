@@ -8,9 +8,9 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
+  <body id="home">
     <%= render "includes/navigation" %>
     <%= yield %>
-    <!--%= render "includes/footer" %-->
+    <%= render "includes/footer" %>
   </body>
 </html>
