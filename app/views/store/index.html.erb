@@ -13,10 +13,8 @@
       </tr>
   <% end %>
 <% end %>
-
-
       <tr>
-        <td><%= number_to_currency(@products.first.price) %></td>
+        <td id="price"><%= number_to_currency(@products.first.price) %></td>
       </tr>
       <tr>
         <td>
@@ -29,8 +27,7 @@
       </tr>
     </table>
 
-<%= button_to "Add to Cart" %> <!-- need to update the path and params for this button -->
-
+<button>Add to Cart</button> <!-- need to update the path and params for this button -->
 
 <% @designs.each do |design|%>
   <table>
@@ -42,17 +39,18 @@
 <% end %>
 
 <script>
-  $(document).ready(function(e){
+  $(document).ready(function(){
     $(".colour_thumbnail").on("click", function(e){ // select shirt colour
-      var colour = $(e.currentTarget).attr("id");
+      var colour = $(this).attr("id");
       console.log(colour);
       $("#tshirtTemplate").html("");
       $("#tshirtTemplate").append($("<img>").attr("src", "/assets/" + colour + ".png").attr("class", "tshirt").attr("id", colour));
     });
 
-    $(".design_thumbnail").on("click", function(e){ // select design to apply on t-shirt
-      var designUrl = $(e.currentTarget).attr("src");
-      var design_id = $(e.currentTarget).attr("id");
+    $(".design_thumbnail").on("click", function(){ // select design to apply on t-shirt
+      $(".design_container").html("");
+      var designUrl = $(this).attr("src");
+      var design_id = $(this).attr("id");
       console.log(design_id)
       var $designImg = $("<img>").attr("src", designUrl).attr("class", "design_img").attr("id", design_id);
       var $designContainer = $("<div>").attr("class", "design_container").append($designImg);
@@ -62,9 +60,28 @@
         position: "absolute"
       });
       $(".main-container").append($designContainer);
-      $($designContainer).draggable();
-      $($designImg).resizable({aspectRatio: true});
+      $designContainer.draggable();
+      $designImg.resizable({aspectRatio: true});
+    });
 
-    })
+    $("button").on("click", function(){
+      var top = $(".tshirt").position().top - $(".design_container").position().top;
+      var left = $(".tshirt").position().left - $(".design_img").position().left;
+      var tshirtWidth = $(".tshirt").css("width");
+      var tshirtHeight = $(".tshirt").css("height");
+      var width = $(".design_img").css("width");
+      var height = $(".design_img").css("height");
+      var widthRatio = (parseInt(width.substr(0, width.length - 2)) / parseInt(tshirtWidth.substr(0, tshirtWidth.length - 2))) * 100
+      // var heightRatio = (height / tshirtHeight) * 100
+
+      // str.substr(0, str.length - 2)
+      console.log(top)
+      console.log(left)
+      console.log(tshirtWidth)
+      console.log(tshirtHeight)
+      console.log(widthRatio)
+      // console.log(heightRatio)
+
+    });
   })
 </script>
