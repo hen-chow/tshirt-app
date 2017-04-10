@@ -8,7 +8,7 @@
   <% if product.size === "S" %>
     <table>
       <tr>
-        <td class="colour_thumbnail"><%= image_tag product.thumbnail %></td>
+        <td class="colour_thumbnail", id="<%= product.colour %>"><%= image_tag product.thumbnail, class: product.colour %></td>
       </tr>
     </table>
   <% end %>
@@ -21,10 +21,17 @@
     <td class="design_thumbnail"><%= image_tag design.img_src %></td>
     <!-- <td><%= design.name %></td> -->
   </tr>
-<!-- <div id="tshirtTemplate">
-  <%= image_tag "/assets/tshirt_templ.png", class: "tshirt" %>
-</div> -->
 </table>
-
-
 <% end %>
+
+<script>
+  $(document).ready(function(e){
+    $(".colour_thumbnail").on("click", function(e){
+      var colour = $(e.currentTarget).attr("id");
+    console.log(colour);
+    });
+
+  })
+
+
+</script>
