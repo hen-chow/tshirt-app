@@ -11,8 +11,12 @@
       <tr>
         <td class="colour_thumbnail", id="<%= product.colour %>"><%= image_tag product.thumbnail, class: product.colour %></td>
       </tr>
+  <% end %>
+<% end %>
+
+
       <tr>
-        <td><%= number_to_currency(product.price) %></td>
+        <td><%= number_to_currency(@products.first.price) %></td>
       </tr>
       <tr>
         <td>
@@ -24,8 +28,7 @@
         </td>
       </tr>
     </table>
-  <% end %>
-<% end %>
+
 <%= button_to "Add to Cart" %> <!-- need to update the path and params for this button -->
 
 
