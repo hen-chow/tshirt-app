@@ -47,8 +47,17 @@ ul.nav li.active {
   width: 75px;
 }
 
+.mainBody {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 60px;
+}
+
+
+
 body {
   background-color: #E4E4E4;
+
 }
 
 .tshirt {
