@@ -1,7 +1,8 @@
 <h1>Print your shirt</h1>
-
-<div id="tshirtTemplate">
-  <%= image_tag "/assets/white.png", class: "tshirt" %>
+<div class="main-container">
+  <div id="tshirtTemplate">
+    <%= image_tag "/assets/white.png", class: "tshirt" %>
+  </div>
 </div>
 
 <% @products.each do |product|%>
@@ -25,7 +26,7 @@
     </table>
   <% end %>
 <% end %>
-<%= button_to "Add to Cart"%> <!-- need to update the path and params for this button -->
+<%= button_to "Add to Cart" %> <!-- need to update the path and params for this button -->
 
 
 <% @designs.each do |design|%>
@@ -52,13 +53,19 @@
       var designUrl = $(e.currentTarget).attr("src");
       var design_id = $(e.currentTarget).attr("id");
       console.log(design_id)
-      var $design = $("<img>").attr("src", designUrl).attr("id", design_id);
-      $design.css({
+      var $designImg = $("<img>").attr("src", designUrl).attr("class", "design_img").attr("id", design_id);
+      var $designContainer = $("<div>").attr("class", "design_container").append($designImg);
+
+      $designContainer.css({
         top: "30px",
         left: "70px",
         position: "absolute"
       });
-      $("#tshirtTemplate").append($design);
+      $(".main-container").append($designContainer);
+      $($designContainer).draggable();
+      $($designImg).resizable({aspectRatio: true});
+
+
     })
   })
 </script>
