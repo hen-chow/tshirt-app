@@ -1,7 +1,7 @@
 <h1>Print your shirt</h1>
 
 <div id="tshirtTemplate">
-  <%= image_tag "/assets/tshirt_templ.png", class: "tshirt" %>
+  <%= image_tag "/assets/white.png", class: "tshirt" %>
 </div>
 
 <% @products.each do |product|%>
@@ -29,6 +29,9 @@
     $(".colour_thumbnail").on("click", function(e){
       var colour = $(e.currentTarget).attr("id");
     console.log(colour);
+  $("#tshirtTemplate").html("");
+  $("#tshirtTemplate").append($("<img>").attr("src", "/assets/"+colour+".png").attr("class", "tshirt"))
+
     });
 
   })
