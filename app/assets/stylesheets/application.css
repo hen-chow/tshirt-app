@@ -41,3 +41,20 @@ ul.nav li.active {
    background: green;
    color: #d9d9d9;
 }
+
+.design_thumbnail > img {
+  height: 75px;
+  width: 75px;
+}
+
+body {
+  background-color: lightgray;
+}
+
+.tshirt {
+  width: 400px;
+}
+
+.colour_thumbnail > img {
+  height: 50px;
+}

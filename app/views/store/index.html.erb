@@ -1,17 +1,30 @@
 <h1>Print your shirt</h1>
 
+<div id="tshirtTemplate">
+  <%= image_tag "/assets/tshirt_templ.png", class: "tshirt" %>
+</div>
+
+<% @products.each do |product|%>
+  <% if product.size === "S" %>
+    <table>
+      <tr>
+        <td class="colour_thumbnail"><%= image_tag product.thumbnail %></td>
+      </tr>
+    </table>
+  <% end %>
+<% end %>
+
 <% @designs.each do |design|%>
-  <div class="entry">
-    <%= image_tag "design.img_src" %>
-    <h3><%= design.name %></h3>
-  </div>
+
+<table>
+  <tr>
+    <td class="design_thumbnail"><%= image_tag design.img_src %></td>
+    <!-- <td><%= design.name %></td> -->
+  </tr>
 <!-- <div id="tshirtTemplate">
   <%= image_tag "/assets/tshirt_templ.png", class: "tshirt" %>
 </div> -->
-
-<table>
-<tr>
-  <td><%= design.name %></td>
-</tr>
-<% end %>
 </table>
+
+
+<% end %>
