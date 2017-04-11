@@ -14,10 +14,10 @@ Order.destroy_all
 LineItem.destroy_all
 Cart.destroy_all
 
-user_1 = User.create(name:'Jin', email:'jin@wdi.com', password:'pass123')
-user_2 = User.create(name:'Diego', email:'diego@wdi.com', password:'pass456')
+user_1 = User.create(name:'Jin', email:'jin@wdi.com', password:'pass000')
+user_2 = User.create(name:'Diego', email:'diego@wdi.com', password:'pass000')
 user_3 = User.create(name:'Peach', email:'peach@wdi.com', password:'pass000')
-user_4 = User.create(name:'Jared', email:'jared@wdi.com', password:'pass123')
+user_4 = User.create(name:'Jared', email:'jared@wdi.com', password:'pass000')
 user_5 = User.create(name:'Hen', email:'hen@wdi.com', password:'pass000')
 
 product_1 = Product.create(colour:'white', size:'S', price:20.99, stock_level:50, img_src:'/assets/tshirt_templ.png', thumbnail:'/assets/white_thumbnail.jpg')
