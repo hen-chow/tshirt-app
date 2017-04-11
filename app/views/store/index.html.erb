@@ -7,32 +7,32 @@
   </div>
 
   <h2>Select t-shirt colour</h2>
-<% @products.each do |product|%>
-  <% if product.size === "S" %>
-    <table>
-      <tr>
-        <td class="colour_thumbnail", id="<%= product.id %>", colour="<%= product.colour %>"><%= image_tag product.thumbnail, class: product.colour %></td>
-      </tr>
-  <% end %>
-<% end %>
-      <tr>
-        <td id="price"><%= number_to_currency(@products.first.price) %></td>
-      </tr>
-      <tr>
-        <td>
-          <select class="size"> <!-- create Size dropdown menu -->
-            <% @sizes.each do |u| %>
-              <option value="<%= u %>"><%= u %></option>
-            <% end %>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Qty: <%= text_field_tag "qty" %>
-        </td>
-      </tr>
-    </table>
+  <table>
+    <tr>
+      <% @products.each do |product|%>
+        <% if product.size === "S" %>
+          <td class="colour_thumbnail", id="<%= product.id %>", colour="<%= product.colour %>"><%= image_tag product.thumbnail, class: product.colour %></td>
+        <% end %>
+      <% end %>
+    </tr>
+    <tr>
+      <td id="price"><%= number_to_currency(@products.first.price) %></td>
+    </tr>
+    <tr>
+      <td>
+        <select class="size"> <!-- create Size dropdown menu -->
+          <% @sizes.each do |u| %>
+            <option value="<%= u %>"><%= u %></option>
+          <% end %>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Qty: <%= text_field_tag "qty" %>
+      </td>
+    </tr>
+  </table>
 
 <button class="ui submit button">Add to Cart</button>
  <!-- need to update the path and params for this button -->
