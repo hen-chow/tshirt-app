@@ -3,9 +3,9 @@
 </div-->
 <div class="ui inverted segment">
 
-      <%= link_to store_index_path, class: "ui blue basic button" do %>Home
+      <%= link_to root_path, class: "ui blue basic button" do %>Home
 
-        <%= link_to "Store", store_index_path, class: "ui blue basic button" %>
+        <%= link_to "Store", root_path, class: "ui blue basic button" %>
         <%= link_to "Shopping Cart", cart_path(id: @cart.id), class: "ui blue basic button" %>
         <%= link_to "Signup", signup_path, class: "ui blue basic button" %>
         <%= link_to "Login", signin_path, class: "ui blue basic button" %>
