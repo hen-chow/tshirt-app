@@ -1,4 +1,42 @@
-<% form_for @order do |f| %>
-  <%= f.label :name %>
+<div class="mainBody">
+<h1>LogIn</h1>
 
-  <% end %>
+<%= form_tag signin_path, method: "post" do %>
+  <table>
+    <tr>
+      <td><label>Email</label>
+      <input type="text" name="email"/></td>
+    </tr>
+    <tr>
+      <td><label>Password</label>
+      <input type="password" name="password"/></td>
+    </tr>
+    <tr>
+      <td><div class="ui submit button"> <input type="submit" value="signin"/></div></td>
+    </tr>
+    <tr>
+      Not a subscriber? <%= link_to "Signup here", signin_path %>
+    </tr>
+  </table>
+<% end %>
+
+
+<%= form_for @order do |f| %>
+  <div class="field">
+    <%= f.label :delivery_address %>
+    <%= f.text_field :delivery_address, rows: 5, cols: 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_cost %>
+    <%= f.select :delivery_cost, Order::DELIVERY_TYPES, prompt: 'Select a delivery method' %>
+  </div>
+  <div class="field">
+    <%= f.label :pay_type %>
+    <%= f.select :pay_type, Order::PAYMENT_TYPES, prompt: 'Select a payment method' %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Place Your Order' %>
+  </div>
+<% end %>
+
+</div>
