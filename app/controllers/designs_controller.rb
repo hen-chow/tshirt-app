@@ -7,7 +7,6 @@ class DesignsController < ApplicationController
     if design.save
       render json: design
     else
-binding.pry
       render json: {}, status: :bad_request
     end
   end
