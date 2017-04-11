@@ -16,7 +16,9 @@ class OrdersController < ApplicationController
 
     @cart = current_cart
     if @cart.line_items.empty?
-      redirect_to store_url, notice: "Your shopping cart is empty"
+      flash[:notice] = "Your shopping cart is empty."
+
+      redirect_to store_url
     end
   end
 
@@ -27,10 +29,14 @@ class OrdersController < ApplicationController
     if @order.save
       Cart.destroy(session[:cart_id])
       session[:cart_id] = nil
-      redirect_to store_url, notice: "Thanks for your order"
+      flash[:notice] = "Thanks for your order."
+
+      redirect_to store_url
     else
       @cart = current_cart
-      render action: "new", notice: "Something went wrong. Please try again"
+      flash[:error] = "Something went wrong. Please try again."
+
+      render action: "new"
     end
   end
 

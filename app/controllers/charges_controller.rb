@@ -5,7 +5,7 @@ class ChargesController < ApplicationController
 
   def create
     # Amount in cents
-    @total_price = number_to_currency @cart.total_price 
+    @total_price = number_to_currency @cart.total_price
     @amount = dollars_to_cents @total_price
 
     customer = Stripe::Customer.create(

@@ -160,3 +160,30 @@ ul.color li {
   margin: auto;
   width: 50%;
 }
+
+
+.firstwrapper {
+    position: relative;
+    width: 500px;
+    background-color: #ffbf00;
+}
+.aa {
+    background-color: #f00;
+    width: 400px;
+    margin: auto;
+}
+.bb {
+    background-color: #0f0;
+    width: 400px;
+    margin: auto;
+}
+.cc {
+    background-color: #00f;
+    width: 400px;
+    margin: auto;
+}
+.dd {
+    background-color: orange;
+    width: 400px;
+    margin: auto;
+}
