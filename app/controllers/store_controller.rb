@@ -6,6 +6,7 @@ class StoreController < ApplicationController
     @products = Product.all
     @designs = Design.order(:name)
     @sizes = SIZE_CONST
+    @cart = current_cart
   end
 
 end
