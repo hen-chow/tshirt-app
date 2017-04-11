@@ -18,7 +18,7 @@ class LineItemsController < ApplicationController
     if @line_item.save
       redirect_to cart_path(id: @cart.id)  # notice: 'Line item was successfully created.'
     else
-      redirect_to store_url
+      redirect_to root_path
     end
   end
 
@@ -41,7 +41,7 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if current_cart.line_items.empty?
         format.html do
-          redirect_to store_url
+          redirect_to root_path
           flash[:notice] = 'Your cart is empty.'
         end
       else

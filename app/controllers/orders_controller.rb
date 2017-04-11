@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     if @cart.line_items.empty?
       flash[:notice] = "Your shopping cart is empty."
 
-      redirect_to store_url
+      redirect_to root_path
     end
   end
 
@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
       session[:cart_id] = nil
       flash[:notice] = "Thanks for your order."
 
-      redirect_to store_url
+      redirect_to root_path
     else
       @cart = current_cart
       flash[:error] = "Something went wrong. Please try again."
