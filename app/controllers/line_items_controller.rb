@@ -9,8 +9,11 @@ class LineItemsController < ApplicationController
     product = Product.find_by(colour: params[:colour], size: params[:size])
     design = Design.find(params[:design_id])
 
+
     # @line_item = @cart.add_product(product.id, design.id, params[:qty], @cart.id) # telling it to call the add_product method in the cart model
     @line_item = LineItem.create(cart_id: @cart.id, product_id: product.id, design_id: design.id, qty: params[:qty], top: params[:top], left: params[:left], width_ratio: params[:width_ratio], height_ratio: params[:height_ratio])
+
+    # @line_item = LineItem.create(clean_params.merge(cart_id: @cart.id))
 
     if @line_item.save
       redirect_to cart_path(id: @cart.id)  # notice: 'Line item was successfully created.'
