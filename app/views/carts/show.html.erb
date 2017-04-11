@@ -2,37 +2,38 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<div class="cart_title">Your shopping cart</div>
-<table>
-  <% @cart.line_items.each do |item| %>
-    <tr>
-      <td>
-        <select name="qty">
-          <% @qty.each do |u| %>
-            <% if u === item.qty %>
-              <option value="<%= u %>" selected="<%= item.qty %>"><%= u %></option>
-            <% else %>
-              <option value="<%= u %>"><%= u %></option>
-            <% end %>
-          <% end %>
-        </select>
-      </td>
-      <%= form_for item do |f| %>
-        <td><%= f.text_field :qty, value: item.qty %></td>
-        <td><%= f.submit 'Update Qty' %></td>
-      <% end %>
-      <td><%= item.qty %> &times;</td>
-      <td><%= item.product.colour %></td>
-      <td class="item_price"><%= number_to_currency(item.total_price) %></td>
-      <td><%= button_to 'Delete Item', item, method: :delete, confirm: 'Are you sure?' %></td>
+<div class="mainBody">
+  <div class="cart_title"><h2>Your shopping cart</h2></div>
+  <table>
+    <% @cart.line_items.each do |item| %>
+      <tr>
+        <!-- <td><%= item.qty %> &times;</td> -->
+        <td><%= item.product.colour.titlecase %> t-shirt</td>
+        <td class="item_price"><%= number_to_currency(item.total_price) %></td>
+        <%= form_for item do |f| %>
+          <td><%= f.text_field :qty, value: item.qty %></td>
+          <td><%= f.submit 'Update Qty', id: 'update-qty', item_id: item.id %></td>
+        <% end %>
+        <td><%= button_to 'Delete Item', item, method: :delete, data: {confirm: 'Are you sure?'}%></td>
+      </tr>
+    <% end %>
+    <tr class="total_line">
+      <td colspan="2">Total</td>
+      <td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
     </tr>
-  <% end %>
-  <tr class="total_line">
-    <td colspan="2">Total</td>
-    <td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
-  </tr>
-</table>
-
-<%= button_to 'Empty cart', @cart, method: :delete, confirm: "Are you sure?" %>
+  </table>
+  <%= button_to 'Checkout', new_order_path, method: :get %>
+  <%= button_to 'Empty cart', @cart, method: :delete, data: {confirm: "Are you sure?"} %>
+</div>
 <!-- <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %> -->
+
+<!-- <script>
+  $(document).ready(function(){
+    $("#update-qty").on("click", function(){
+      var newQty = $("input").val();
+      console.log(newQty);
+    })
+
+  })
+</script> -->
