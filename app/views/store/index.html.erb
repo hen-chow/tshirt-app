@@ -1,58 +1,72 @@
 <div class="mainBody">
   <h1>Print your shirt</h1>
+  <div class="main-container"
 
-  <div class="main-container">
-    <div class="first">
+  <div id="wrapper">
+  <div id="first">
       <div id="tshirtTemplate">
         <%= image_tag "/assets/white.png", class: "tshirt" %>
       </div>
-      <h2>Select t-shirt colour</h2>
-      <table>
-        <tr>
-          <% @products.each do |product|%>
-            <% if product.size === "S" %>
-              <td class="colour_thumbnail", id="<%= product.id %>", colour="<%= product.colour %>"><%= image_tag product.thumbnail, class: product.colour %></td>
-            <% end %>
-          <% end %>
-        </tr>
-        <tr>
-          <td id="price"><%= number_to_currency(@products.first.price) %></td>
-        </tr>
-        <tr>
-          <td>
-            <select class="size"> <!-- create Size dropdown menu -->
-              <% @sizes.each do |u| %>
-                <option value="<%= u %>"><%= u %></option>
-              <% end %>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Qty: <%= text_field_tag "qty" %>
-          </td>
-        </tr>
-      </table>
 
-      <button class="ui submit button">Add to Cart</button>
+  <div id="t-color">
+
+      <h3>Price: <%= number_to_currency(@products.first.price) %></h3>
+      <br>
+      <ul class="color">
+        <li><strong>Select colour:</strong></li>
+        <% @products.each do |product|%>
+          <% if product.size === "S" %>
+            <li class="colour_thumbnail", id="<%= product.id %>", colour="<%= product.colour %>"><%= image_tag product.thumbnail, class: product.colour %></li>
+          <% end %>
+        <% end %>
+      </ul>
+
+ </div>
+ <br><br>
+ Size: <select class="size"> <!-- create Size dropdown menu -->
+   <% @sizes.each do |u| %>
+     <option value="<%= u %>"><%= u %></option>
+   <% end %>
+    </select>&nbsp;&nbsp;&nbsp;&nbsp;
+    Qty: <%= text_field_tag "qty" %>
+
+ <br>
+
+<button class="ui green button">Add to Cart</button><br>
+
+  </div>
+
+  <div id="second">
+
+  </div>
+
+  <div id="third">
+    <h3>Select Design</h3>
+      <% @designs.each do |design|%>
+          <span class="design_thumbnail", src="<%= design.img_src %>", id="<%= design.id %>"><%= image_tag design.img_src %></span>
+          <!-- <td><%= design.name %></td> -->
+      <% end %>
+
+      <br>
+            <% if @current_user %>
+           <input class="cloudinary-fileupload" type="file" name="file"/>
+            <% else %>
+              <h4>You must be logged in to upload your own design</h4>
+            <% end %>
+
+  </div>
+</div>
+
      <!-- need to update the path and params for this button -->
-    </div>
-    <div id="second">
-      <table id="designs">
+
+      <!--table id="designs">
         <% @designs.each do |design|%>
           <tr>
             <td class="design_thumbnail", src="<%= design.img_src %>", id="<%= design.id %>"><%= image_tag design.img_src %></td>
-            <!-- <td><%= design.name %></td> -->
+
           </tr>
         <% end %>
-      </table>
-
-      <% if @current_user %>
-        <input class="cloudinary-fileupload" type="file" name="file"/>
-      <% else %>
-        <h4>You must be logged in to upload your own design</h4>
-      <% end %>
-    </div>
+      </table -->
 
       <script>
         var createLineItem = function(productId, designId, qty, top, left, widthRatio, heightRatio){

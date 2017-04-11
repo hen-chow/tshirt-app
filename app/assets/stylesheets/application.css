@@ -72,6 +72,11 @@ body {
     min-height: 500px;
     clear:both;
 }
+#wrapper {
+    width:100%;
+    min-height: 550px;
+    clear:both;
+}
 #first {
 
     width:40%;
@@ -80,20 +85,19 @@ body {
     margin-right:10px;
 }
 #second {
-    background-color:#DFE9DD;
-    width:40%;
+    width:5%;
     text-align: center;
-    float:left;
+    float:right;
+    padding-left:20px;
     padding-top:5px;
 }
-/*#third {
-    background-color:white;
-    width:40%;
+#third {
+    width:50%;
     float:left;
     text-align: center;
     padding-left:20px;
     padding-top:5px;
-}*/
+}
 
 /*#first {
   width: 50%;
@@ -105,11 +109,12 @@ body {
 }
 
 .colour_thumbnail > img {
-  height: 50px;
+  height: 30px;
 }
 
+
 input[type=text], input[type=password] {
-    width: 49%;
+    width: 30%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -135,10 +140,23 @@ input[type=button], input[type=submit] {
     cursor: pointer;
 }
 
+
 #form {
 	border: 2px solid #ccc;
 	border-radius: 10px;
  	padding: 20px;
 	margin:20px;
 	width:60%;
+}
+
+ul.color {
+	list-style: none;
+}
+ul.color li {
+  float: left;
+  margin-right: 5px;
+}
+#t-color {
+  margin: auto;
+  width: 50%;
 }

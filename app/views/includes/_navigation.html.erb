@@ -4,12 +4,12 @@
 <div class="ui inverted segment">
 
       <%= link_to root_path, class: "ui inverted green button" do %>Home
- 
+
         <%= link_to "Store", root_path, class: "ui inverted green button" %>
         <%= link_to "Shopping Cart", cart_path(id: @cart.id), class: "ui inverted green button" %>
-        <%= link_to "Signup", signup_path, class: "ui inverted green button" %>
-        <%= link_to "Login", signin_path, class: "ui inverted green button" %>
-        <%= link_to "Logout", signout_path, class: "ui inverted green button", method: "delete" %>
+        <%= link_to "Sign Up", signup_path, class: "ui inverted green button" %>
+        <%= link_to "Sign In", signin_path, class: "ui inverted green button" %>
+        <%= link_to "Sign Out", signout_path, class: "ui inverted green button", method: "delete" %>
 
       <%end%>
 

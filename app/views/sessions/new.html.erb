@@ -1,9 +1,24 @@
 <div class="mainBody">
-<h1>LogIn</h1>
+  <h1>Sign In</h1>
 
-<%= form_tag signin_path, method: "post" do %>
-<div id="form">
-  <table>
+  <%= form_tag signin_path, method: "post" do %>
+    <div id="form">
+      <p>
+        <label>Email</label>
+        <input type="text" name="email"/>
+      </p>
+      <p>
+        <label>Password</label>
+        <input type="password" name="password"/>
+      </p>
+      <p>
+        <input type="submit" value="signin"/>
+      </p>
+    <% end %>
+  </div>
+</div>
+
+  <!--table>
   <tr>
     <td><label>Email</label>
     <input type="text" name="email"/></td>
@@ -17,5 +32,4 @@
 </tr>
  </table>
  </div>
-<% end %>
-</div>
+<% end %-->
