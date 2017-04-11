@@ -6,25 +6,14 @@
 <table>
   <% @cart.line_items.each do |item| %>
     <tr>
-      <td>
-        <select name="qty">
-          <% @qty.each do |u| %>
-            <% if u === item.qty %>
-              <option value="<%= u %>" selected="<%= item.qty %>"><%= u %></option>
-            <% else %>
-              <option value="<%= u %>"><%= u %></option>
-            <% end %>
-          <% end %>
-        </select>
-      </td>
       <%= form_for item do |f| %>
         <td><%= f.text_field :qty, value: item.qty %></td>
-        <td><%= f.submit 'Update Qty' %></td>
+        <td><%= f.submit 'Update Qty', id: 'update-qty', item_id: item.id %></td>
       <% end %>
       <td><%= item.qty %> &times;</td>
       <td><%= item.product.colour %></td>
       <td class="item_price"><%= number_to_currency(item.total_price) %></td>
-      <td><%= button_to 'Delete Item', item, method: :delete, confirm: 'Are you sure?' %></td>
+      <td><%= button_to 'Delete Item', item, method: :delete, data: {confirm: 'Are you sure?'}%></td>
     </tr>
   <% end %>
   <tr class="total_line">
@@ -33,6 +22,16 @@
   </tr>
 </table>
 
-<%= button_to 'Empty cart', @cart, method: :delete, confirm: "Are you sure?" %>
+<%= button_to 'Empty cart', @cart, method: :delete, data: {confirm: "Are you sure?"} %>
 <!-- <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %> -->
+
+<!-- <script>
+  $(document).ready(function(){
+    $("#update-qty").on("click", function(){
+      var newQty = $("input").val();
+      console.log(newQty);
+    })
+
+  })
+</script> -->
