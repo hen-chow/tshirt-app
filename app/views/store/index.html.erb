@@ -2,155 +2,158 @@
   <h1>Print your shirt</h1>
 
   <div class="main-container">
-  <div id="tshirtTemplate">
-    <%= image_tag "/assets/white.png", class: "tshirt" %>
-
-  <h2>Select t-shirt colour</h2>
-  <table>
-    <tr>
-      <% @products.each do |product|%>
-        <% if product.size === "S" %>
-          <td class="colour_thumbnail", id="<%= product.id %>", colour="<%= product.colour %>"><%= image_tag product.thumbnail, class: product.colour %></td>
-        <% end %>
-      <% end %>
-    </tr>
-    <tr>
-      <td id="price"><%= number_to_currency(@products.first.price) %></td>
-    </tr>
-    <tr>
-      <td>
-        <select class="size"> <!-- create Size dropdown menu -->
-          <% @sizes.each do |u| %>
-            <option value="<%= u %>"><%= u %></option>
+    <div class="first">
+      <div id="tshirtTemplate">
+        <%= image_tag "/assets/white.png", class: "tshirt" %>
+      </div>
+      <h2>Select t-shirt colour</h2>
+      <table>
+        <tr>
+          <% @products.each do |product|%>
+            <% if product.size === "S" %>
+              <td class="colour_thumbnail", id="<%= product.id %>", colour="<%= product.colour %>"><%= image_tag product.thumbnail, class: product.colour %></td>
+            <% end %>
           <% end %>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Qty: <%= text_field_tag "qty" %>
-      </td>
-    </tr>
-  </table>
+        </tr>
+        <tr>
+          <td id="price"><%= number_to_currency(@products.first.price) %></td>
+        </tr>
+        <tr>
+          <td>
+            <select class="size"> <!-- create Size dropdown menu -->
+              <% @sizes.each do |u| %>
+                <option value="<%= u %>"><%= u %></option>
+              <% end %>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Qty: <%= text_field_tag "qty" %>
+          </td>
+        </tr>
+      </table>
 
-<button class="ui submit button">Add to Cart</button>
- <!-- need to update the path and params for this button -->
-</div>
-<table id="designs">
-  <% @designs.each do |design|%>
-    <tr>
-      <td class="design_thumbnail", src="<%= design.img_src %>", id="<%= design.id %>"><%= image_tag design.img_src %></td>
-      <!-- <td><%= design.name %></td> -->
-    </tr>
-  <% end %>
-</table>
+      <button class="ui submit button">Add to Cart</button>
+     <!-- need to update the path and params for this button -->
+    </div>
+    <div id="second">
+      <table id="designs">
+        <% @designs.each do |design|%>
+          <tr>
+            <td class="design_thumbnail", src="<%= design.img_src %>", id="<%= design.id %>"><%= image_tag design.img_src %></td>
+            <!-- <td><%= design.name %></td> -->
+          </tr>
+        <% end %>
+      </table>
 
-<% if @current_user %>
-  <input class="cloudinary-fileupload" type="file" name="file"/>
-<% else %>
-  <h4>You must be logged in to upload your own design</h4>
-<% end %>
+      <% if @current_user %>
+        <input class="cloudinary-fileupload" type="file" name="file"/>
+      <% else %>
+        <h4>You must be logged in to upload your own design</h4>
+      <% end %>
+    </div>
 
-<script>
-  var createLineItem = function(productId, designId, qty, top, left, widthRatio, heightRatio){
-    $.ajax({
-      url: "/line_items",
-      method: "POST",
-      dataType: "JSON",
-      data: {
-        product_id: productId,
-        design_id: designId,
-        qty: qty,
-        top: top,
-        left: left,
-        width_ratio: widthRatio,
-        height_ratio: heightRatio
-      }
-    });
-  }
-
-  $(document).ready(function(){
-    $(document).on("click", ".colour_thumbnail", function(){ // select shirt colour
-      var colour = $(this).attr("colour");
-      var productId = $(this).attr("id");
-      console.log(colour);
-      $("#tshirtTemplate").html("");
-      $("#tshirtTemplate").append($("<img>").attr("src", "/assets/" + colour + ".png").attr("class", "tshirt").attr("id", productId ));
-    });
-
-    $(document).on("click", ".design_thumbnail", function(){ // select design to apply on t-shirt
-      $(".design_container").html("");
-      var designUrl = $(this).attr("src");
-      var designId = $(this).attr("id");
-      console.log(designId)
-      var $designImg = $("<img>").attr("src", designUrl).attr("class", "design_img").attr("id", designId);
-      var $designContainer = $("<div>").attr("class", "design_container").append($designImg);
-      $designContainer.css({
-        top: "30px",
-        left: "70px",
-        position: "absolute"
-      });
-      $(".main-container").append($designContainer);
-      $designContainer.draggable();
-      $designImg.resizable({aspectRatio: true});
-    });
-
-    $("button").on("click", function(){
-      var top = $(".design_container").position().top - $(".tshirt").position().top;
-      var left = $(".design_container").position().left - $(".tshirt").position().left;
-      var tshirtWidth = $(".tshirt").css("width");
-      var tshirtHeight = $(".tshirt").css("height");
-      var width = $(".design_img").css("width");
-      var height = $(".design_img").css("height");
-      var widthRatio = (parseInt(width.substr(0, width.length - 2)) / parseInt(tshirtWidth.substr(0, tshirtWidth.length - 2))) * 100; // convert widths to integers and calculate ratios
-      var heightRatio = (parseInt(height.substr(0, height.length - 2)) / parseInt(tshirtHeight.substr(0, tshirtHeight.length - 2))) * 100 ;// convert heights to integers and calculate ratios
-      console.log(top)
-      console.log(left)
-      var productId = $(".tshirt").attr("id");
-      var designId = $(".design_img").attr("id");
-      var qty = $("#qty").val();
-      //var size = $(".size").val();
-
-      createLineItem(productId, designId, qty, top, left, widthRatio, heightRatio);
-    });
-
-    if($.fn.cloudinary_fileupload !== undefined) {
-      $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
-
-      $('input.cloudinary-fileupload[type=file]').unsigned_cloudinary_upload("mvmwmezx",
-        { cloud_name: 'djvkbcwjg', tags: 'browser_uploads' },
-        { multiple: true }
-      ).bind('cloudinarydone', function(e, data) {
-        $.ajax({
-          url: "/designs",
-          method: "POST",
-          dataType: "JSON",
-          data: {
-            design:{
-              img_src: data.result.secure_url,
-              width: data.result.width,
-              length: data.result.height,
-              name: data.result.original_filename
+      <script>
+        var createLineItem = function(productId, designId, qty, top, left, widthRatio, heightRatio){
+          $.ajax({
+            url: "/line_items",
+            method: "POST",
+            dataType: "JSON",
+            data: {
+              product_id: productId,
+              design_id: designId,
+              qty: qty,
+              top: top,
+              left: left,
+              width_ratio: widthRatio,
+              height_ratio: heightRatio
             }
-          },
-          success: function(data){
-            var $tr = $("<tr>");
-            var $td = $("<td>").addClass("design_thumbnail").attr("src", data.img_src).attr("id", data.id);
-            $img = $("<img>").attr("src", data.img_src);
+          });
+        }
 
-            $td.append($img);
-            $tr.append($td);
+        $(document).ready(function(){
+          $(document).on("click", ".colour_thumbnail", function(){ // select shirt colour
+            var colour = $(this).attr("colour");
+            var productId = $(this).attr("id");
+            console.log(colour);
+            $("#tshirtTemplate").html("");
+            $("#tshirtTemplate").append($("<img>").attr("src", "/assets/" + colour + ".png").attr("class", "tshirt").attr("id", productId ));
+          });
 
-            $("table#designs").append($tr);
-          },
-          error: function(){
-            alert("Something has gone wrong while saving your image on our server")
+          $(document).on("click", ".design_thumbnail", function(){ // select design to apply on t-shirt
+            $(".design_container").html("");
+            var designUrl = $(this).attr("src");
+            var designId = $(this).attr("id");
+            console.log(designId)
+            var $designImg = $("<img>").attr("src", designUrl).attr("class", "design_img").attr("id", designId);
+            var $designContainer = $("<div>").attr("class", "design_container").append($designImg);
+            $designContainer.css({
+              top: "30px",
+              left: "70px",
+              position: "absolute"
+            });
+            $(".main-container").append($designContainer);
+            $designContainer.draggable();
+            $designImg.resizable({aspectRatio: true});
+          });
+
+          $("button").on("click", function(){
+            var top = $(".design_container").position().top - $(".tshirt").position().top;
+            var left = $(".design_container").position().left - $(".tshirt").position().left;
+            var tshirtWidth = $(".tshirt").css("width");
+            var tshirtHeight = $(".tshirt").css("height");
+            var width = $(".design_img").css("width");
+            var height = $(".design_img").css("height");
+            var widthRatio = (parseInt(width.substr(0, width.length - 2)) / parseInt(tshirtWidth.substr(0, tshirtWidth.length - 2))) * 100; // convert widths to integers and calculate ratios
+            var heightRatio = (parseInt(height.substr(0, height.length - 2)) / parseInt(tshirtHeight.substr(0, tshirtHeight.length - 2))) * 100 ;// convert heights to integers and calculate ratios
+            console.log(top)
+            console.log(left)
+            var productId = $(".tshirt").attr("id");
+            var designId = $(".design_img").attr("id");
+            var qty = $("#qty").val();
+            //var size = $(".size").val();
+
+            createLineItem(productId, designId, qty, top, left, widthRatio, heightRatio);
+          });
+
+          if($.fn.cloudinary_fileupload !== undefined) {
+            $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+
+            $('input.cloudinary-fileupload[type=file]').unsigned_cloudinary_upload("mvmwmezx",
+              { cloud_name: 'djvkbcwjg', tags: 'browser_uploads' },
+              { multiple: true }
+            ).bind('cloudinarydone', function(e, data) {
+              $.ajax({
+                url: "/designs",
+                method: "POST",
+                dataType: "JSON",
+                data: {
+                  design:{
+                    img_src: data.result.secure_url,
+                    width: data.result.width,
+                    length: data.result.height,
+                    name: data.result.original_filename
+                  }
+                },
+                success: function(data){
+                  var $tr = $("<tr>");
+                  var $td = $("<td>").addClass("design_thumbnail").attr("src", data.img_src).attr("id", data.id);
+                  $img = $("<img>").attr("src", data.img_src);
+
+                  $td.append($img);
+                  $tr.append($td);
+
+                  $("table#designs").append($tr);
+                },
+                error: function(){
+                  alert("Something has gone wrong while saving your image on our server")
+                }
+              })
+            })
           }
         })
-      })
-    }
-  })
-</script>
-  </div>
+      </script>
+    </div>
   </div>
 </div>
