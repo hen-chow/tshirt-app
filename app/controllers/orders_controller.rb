@@ -1,7 +1,17 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user, only: [:create]
+  #before_action :authenticate_user, only: [:create]
 
   def new
+
+    if @current_user.nil?
+
+      session[:redirect_to_order] = true
+      flash[:error] = "Please login before completing your order."
+
+      redirect_to signin_path
+    end
+
+
     @order = Order.new
     @current_user = fetch_user
 
