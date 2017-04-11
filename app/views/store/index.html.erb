@@ -1,10 +1,9 @@
 <div class="mainBody">
-  <h1 class="ui header">Print your shirt</h1>
+  <h1>Print your shirt</h1>
 
   <div class="main-container">
   <div id="tshirtTemplate">
     <%= image_tag "/assets/white.png", class: "tshirt" %>
-  </div>
 
   <h2>Select t-shirt colour</h2>
   <table>
@@ -36,7 +35,7 @@
 
 <button class="ui submit button">Add to Cart</button>
  <!-- need to update the path and params for this button -->
-
+</div>
 <table id="designs">
   <% @designs.each do |design|%>
     <tr>
@@ -152,5 +151,6 @@
     }
   })
 </script>
-</div>
+  </div>
+  </div>
 </div>
