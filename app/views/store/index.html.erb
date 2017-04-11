@@ -4,7 +4,7 @@
   <div class="main-container">
     <div class="first">
       <div id="tshirtTemplate">
-        <%= image_tag "/assets/white.png", class: "tshirt" %>
+        <%= image_tag "/assets/white.png", class: "tshirt", id: @product.id %>
       </div>
       <h2>Select t-shirt colour</h2>
       <table>
@@ -112,7 +112,7 @@
             var productId = $(".tshirt").attr("id");
             var designId = $(".design_img").attr("id");
             var qty = $("#qty").val();
-            //var size = $(".size").val();
+            var size = $(".size").val();
 
             createLineItem(productId, designId, qty, top, left, widthRatio, heightRatio);
           });
