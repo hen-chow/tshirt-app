@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
       redirect_to signin_path
     end
 
-
     @order = Order.new
     @current_user = fetch_user
 
