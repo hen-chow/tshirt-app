@@ -14,7 +14,8 @@ class CartsController < ApplicationController
       @cart = Cart.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       logger.error "Attempt to access invalid cart #{params[:id]}"
-      redirect_to store_url, notice: "Invalid cart"
+      flash[:error] = "Attempt to access invalid cart"
+      redirect_to store_url
     else
       respond_to do |format|
         format.html # show.html.erb
@@ -32,18 +33,25 @@ class CartsController < ApplicationController
   def edit
   end
 
-  # POST /carts
-  # POST /carts.json
   def create
     @cart = Cart.new(cart_params)
 
     respond_to do |format|
       if @cart.save
-        format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
-        format.json { render :show, status: :created, location: @cart }
+        format.html do
+          redirect_to @cart
+          flash[:success] = 'Cart was successfully created.'
+        end
+        format.json do
+          render :show, status: :created, location: @cart
+        end
       else
-        format.html { render :new }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
+        format.html do
+          render :new
+        end
+        format.json do
+          render json: @cart.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -53,11 +61,20 @@ class CartsController < ApplicationController
   def update
     respond_to do |format|
       if @cart.update(cart_params)
-        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
-        format.json { render :show, status: :ok, location: @cart }
+        format.html do
+          flash[:success] = 'Cart was successfully updated.'
+          return redirect_to @cart
+        end
+        format.json do
+          render json: {}, status: :ok, location: @cart
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
+        format.html do
+          render :edit
+        end
+        format.json do
+          render json: @cart.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -69,8 +86,13 @@ class CartsController < ApplicationController
     @cart.destroy
     session[:cart_id] = nil
     respond_to do |format|
-      format.html { redirect_to store_url, notice: 'Your cart is currently empty.' }
-      format.json { head :ok }
+      format.html do
+        redirect_to store_url
+        flash[:notice] = 'Your cart is currently empty.'
+      end
+      format.json do
+        head :ok
+      end
     end
   end
 
@@ -80,7 +102,7 @@ class CartsController < ApplicationController
       @cart = Cart.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # only allow the white list through.
     def cart_params
       params.fetch(:cart, {})
     end

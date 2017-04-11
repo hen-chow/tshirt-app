@@ -4,7 +4,7 @@
   <div class="main-container">
     <div class="first">
       <div id="tshirtTemplate">
-        <%= image_tag "/assets/white.png", class: "tshirt", id: @product.id %>
+        <%= image_tag "/assets/white.png", class: "tshirt", colour: "white" %>
       </div>
       <h2>Select t-shirt colour</h2>
       <table>
@@ -20,8 +20,8 @@
         </tr>
         <tr>
           <td>
-            <select class="size"> <!-- create Size dropdown menu -->
-              <% @sizes.each do |u| %>
+            <select id="size"> <!-- create Size dropdown menu -->
+              <% Product::SIZES.each do |u| %>
                 <option value="<%= u %>"><%= u %></option>
               <% end %>
             </select>
@@ -55,14 +55,15 @@
     </div>
 
       <script>
-        var createLineItem = function(productId, designId, qty, top, left, widthRatio, heightRatio){
+        var createLineItem = function(colour, designId, size, qty, top, left, widthRatio, heightRatio){
           $.ajax({
             url: "/line_items",
             method: "POST",
             dataType: "JSON",
             data: {
-              product_id: productId,
+              colour: colour,
               design_id: designId,
+              size: size,
               qty: qty,
               top: top,
               left: left,
@@ -75,10 +76,10 @@
         $(document).ready(function(){
           $(document).on("click", ".colour_thumbnail", function(){ // select shirt colour
             var colour = $(this).attr("colour");
-            var productId = $(this).attr("id");
+            // var productId = $(this).attr("id");
             console.log(colour);
             $("#tshirtTemplate").html("");
-            $("#tshirtTemplate").append($("<img>").attr("src", "/assets/" + colour + ".png").attr("class", "tshirt").attr("id", productId ));
+            $("#tshirtTemplate").append($("<img>").attr("src", "/assets/" + colour + ".png").attr("class", "tshirt").attr("colour", colour));
           });
 
           $(document).on("click", ".design_thumbnail", function(){ // select design to apply on t-shirt
@@ -109,12 +110,12 @@
             var heightRatio = (parseInt(height.substr(0, height.length - 2)) / parseInt(tshirtHeight.substr(0, tshirtHeight.length - 2))) * 100 ;// convert heights to integers and calculate ratios
             console.log(top)
             console.log(left)
-            var productId = $(".tshirt").attr("id");
+            var colour = $(".tshirt").attr("colour");
             var designId = $(".design_img").attr("id");
             var qty = $("#qty").val();
-            var size = $(".size").val();
+            var size = $("#size").val();
 
-            createLineItem(productId, designId, qty, top, left, widthRatio, heightRatio);
+            createLineItem(colour, designId, size, qty, top, left, widthRatio, heightRatio);
           });
 
           if($.fn.cloudinary_fileupload !== undefined) {

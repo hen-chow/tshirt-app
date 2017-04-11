@@ -4,6 +4,9 @@ class Product < ApplicationRecord
 
   before_destroy :ensure_not_referenced_by_any_line_item
 
+  SIZES = ["S", "M", "L"]
+
+
   private
 
     # ensure that there are no line items referencing this product
