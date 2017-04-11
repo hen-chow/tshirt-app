@@ -16,11 +16,15 @@ class CartsController < ApplicationController
       logger.error "Attempt to access invalid cart #{params[:id]}"
       flash[:error] = "Attempt to access invalid cart"
       redirect_to store_url
-    else
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @cart }
-      end
+    # else
+    #   # respond_to do |format|
+    #   #   format.html do
+    #       redirect_to cart_path(id: @cart.id)
+    #     # end
+    #     # format.json do
+    #     #   render json: @cart
+    #     # end
+      # end
     end
   end
 
