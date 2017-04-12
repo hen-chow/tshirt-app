@@ -15,7 +15,7 @@
           <li><strong>Select colour:</strong></li>
           <% @products.each do |product|%>
             <% if product.size === "S" %>
-              <li class="colour_thumbnail", id="<%= product.id %>", colour="<%= product.colour %>" img_src="<%= asset_path(product.colour) %>"><%= image_tag product.thumbnail, class: product.colour %></li>
+              <li class="colour_thumbnail", id="<%= product.id %>", colour="<%= product.colour %>" img_src="<%= asset_path(product.thumbnail) %>"><%= image_tag product.thumbnail, class: product.colour %></li>
             <% end %>
           <% end %>
         </ul>
@@ -37,7 +37,7 @@
   <div id="third">
     <h3>Select Design</h3>
     <% @designs.each do |design|%>
-        <span class="design_thumbnail", src="<%= design.img_src %>", id="<%= design.id %>"><%= image_tag design.img_src %></span>
+        <span class="design_thumbnail", img_src="<%= asset_path(design.img_src) %>", id="<%= design.id %>"><%= image_tag design.img_src %></span>
     <% end %>
     <br>
     <% if @current_user %>
