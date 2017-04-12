@@ -187,3 +187,12 @@ ul.color li {
     width: 400px;
     margin: auto;
 }
+
+.shopping_cart_thumbnail {
+  width: 30px;
+}
+
+.cart_item, .item_price {
+  width: 100px;
+  height: 60px;
+}
