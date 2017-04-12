@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
     @cart = current_cart
     # user_id = @current_user.id
     @order = Order.create(clean_params.merge(user_id: session[:user_id]))
-    order_id = @order.id
+    # order_id = @order.id
     @order.add_line_items_from_cart(current_cart) #, order_id)
 
     # @order = Order.create(clean_params)
