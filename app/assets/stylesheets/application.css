@@ -99,12 +99,19 @@ body {
     padding-top:5px;
 }
 
+#profile {
+    width:61%;
+    float:left;
+    padding-left:20px;
+    padding-top:10px;
+}
+
 .greeting {
     float:right;
     font-size: 20px;
     font-weight: 800;
     margin-top: -5px;
-    padding: 5px 20px;
+    padding: 5px 50px;
     color: green;
 }
 
@@ -117,7 +124,7 @@ body {
   height: 30px;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=select] {
     width: 30%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -133,11 +140,22 @@ input[type=text]:focus {
     border: 2px solid  green;
 }
 
-input[type=button], input[type=submit] {
+input[type=button], input[type=submit], input[type=file] {
     background-color: green;
     border: none;
     color: white;
     padding: 12px 20px;
+    text-decoration: none;
+    margin: 4px 2px;
+	  border-radius: 6px;
+    cursor: pointer;
+}
+
+input[type=file] {
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 5px 5px;
     text-decoration: none;
     margin: 4px 2px;
 	  border-radius: 6px;

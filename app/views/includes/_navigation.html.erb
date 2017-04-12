@@ -3,16 +3,17 @@
 </div-->
 <div class="ui inverted segment">
 
-      <%= link_to root_path, class: "ui inverted green button" do %>Home
-
+      <!--%= link_to root_path, class: "ui inverted green button" do %>Home-->
+        <%= link_to "Home", root_path, class: "ui inverted green button" %>
         <%= link_to "Store", root_path, class: "ui inverted green button" %>
-        <%= link_to "Shopping Cart", cart_path(id: @cart.id), class: "ui inverted green button" %>
-        <%= link_to "Sign Up", signup_path, class: "ui inverted green button" %>
+        <% unless @current_user.present? %>    
         <%= link_to "Sign In", signin_path, class: "ui inverted green button" %>
+        <%= link_to "Sign Up", signup_path, class: "ui inverted green button" %>
+        <% else %>
+        <%= link_to "Shopping Cart", cart_path(id: @cart.id), class: "ui inverted green button" %>
         <%= link_to "Sign Out", signout_path, class: "ui inverted green button", method: "delete" %>
-
-      <%end%>
-      
+        <% end %>
+      <!--%end%-->
       <div class="greeting">
       <% if @current_user.present? %>
       <p> Hi, <%= @current_user.name %></div>

@@ -3,6 +3,7 @@
 <% end %>
 
 <div class="mainBody">
+  <div id="form">
   <div class="cart_title"><h2>Your shopping cart</h2></div>
   <table id="shopping_cart">
     <% @cart.line_items.each do |item| %>
@@ -27,6 +28,7 @@
   </table>
   <%= button_to 'Checkout', new_order_path, method: :get %>
   <%= button_to 'Empty cart', @cart, method: :delete, data: {confirm: "Are you sure?"} %>
+</div>
 </div>
 <!-- <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %> -->
