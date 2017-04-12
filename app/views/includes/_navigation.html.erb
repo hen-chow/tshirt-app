@@ -12,5 +12,10 @@
         <%= link_to "Sign Out", signout_path, class: "ui inverted green button", method: "delete" %>
 
       <%end%>
-
+      
+      <div class="greeting">
+      <% if @current_user.present? %>
+      <p> Hi, <%= @current_user.name %></div>
+              <% end %>
+          </div></p>
 </div>
