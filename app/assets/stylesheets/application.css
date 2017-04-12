@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
@@ -61,6 +62,14 @@ ul.nav li.active {
   margin-bottom: 60px;
 }
 
+.fa-shopping-cart {
+  color: #28bf37;
+  font-size: 1em;
+}
+
+#cart_button {
+  float: right;
+}
 
 body {
   background-color: #E4E4E4;

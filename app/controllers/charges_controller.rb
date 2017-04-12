@@ -1,12 +1,17 @@
 class ChargesController < ApplicationController
 
   def new
+    # raise
+    @order = Order.find(params[:order_id])
+    @total_price = number_to_currency(@cart.total_price) ## loop thru to get total price
+
   end
 
   def create
     # Amount in cents
-    @total_price = number_to_currency @cart.total_price
-    @amount = dollars_to_cents @total_price
+    @order = Order.find(params[:order_id])
+    @total_price = number_to_currency(@cart.total_price)
+    @amount = dollars_to_cents(@total_price)
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
