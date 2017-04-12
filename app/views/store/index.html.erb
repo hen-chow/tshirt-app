@@ -5,7 +5,7 @@
   <div id="wrapper">
     <div id="first">
       <div id="tshirtTemplate">
-        <%= image_tag "/assets/white.png", class: "tshirt", colour: "white" %>
+        <%= image_tag "white.png", class: "tshirt", colour: "white" %>
       </div>
 
       <div id="t-color">
@@ -15,7 +15,7 @@
           <li><strong>Select colour:</strong></li>
           <% @products.each do |product|%>
             <% if product.size === "S" %>
-              <li class="colour_thumbnail", id="<%= product.id %>", colour="<%= product.colour %>"><%= image_tag product.thumbnail, class: product.colour %></li>
+              <li class="colour_thumbnail", id="<%= product.id %>", colour="<%= product.colour %>" img_src="<%= asset_path(product.colour) %>"><%= image_tag product.thumbnail, class: product.colour %></li>
             <% end %>
           <% end %>
         </ul>
@@ -72,11 +72,11 @@
 
       $(document).ready(function(){
         $(document).on("click", ".colour_thumbnail", function(){ // select shirt colour
+          var imgSrc = $(this).attr("img_src");
           var colour = $(this).attr("colour");
           // var productId = $(this).attr("id");
-          console.log(colour);
           $("#tshirtTemplate").html("");
-          $("#tshirtTemplate").append($("<img>").attr("src", "/assets/" + colour + ".png").attr("class", "tshirt").attr("colour", colour));
+          $("#tshirtTemplate").append($("<img>").attr("src", imgSrc).attr("class", "tshirt").attr("colour", colour));
         });
 
         $(document).on("click", ".design_thumbnail", function(){ // select design to apply on t-shirt
