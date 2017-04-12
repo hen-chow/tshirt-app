@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   def new
 
         # raise 'he(n)ll'
-
   end
 
   def create

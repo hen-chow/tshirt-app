@@ -6,12 +6,14 @@ Rails.application.routes.draw do
   resources :orders
   resources :carts
   resources :line_items, only: [:new, :create, :update, :destroy]
-  resources :users
+  resources :users, only: [:new, :create, :show, :index]
   resources :sessions
   resources :designs, only: [:create]
   resources :charges
 
   resources :products, only: [:new]
+
+  # get "user_id" => "user#show"
 
   get "signup", to: "users#new", as: "signup"
 

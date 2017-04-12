@@ -1,1 +1,25 @@
-<% title "user:" + @user.name %>
+<div class="mainbody">
+<%= @user.name %>
+  <div id ="wrapper">
+
+
+    <div id="first">
+
+
+      <div id="second">
+      </div>
+
+        <div id="third">
+          <P> Your latest design</p>
+            <% @user.designs.each do |design| %>
+            <p><%= image_tag design.img_src %></p>
+            <% end %>
+          <P> Order Summary</p>
+        </div>
+
+
+
+
+    </div>
+  </div>
+</div>

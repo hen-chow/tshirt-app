@@ -100,10 +100,12 @@ body {
 }
 
 .greeting {
-    float:  right;
-    	margin-top: -20px;
-      padding: 5px 8px;
-      color: #cc0000;
+    float:right;
+    font-size: 20px;
+    font-weight: 800;
+    margin-top: -5px;
+    padding: 5px 20px;
+    color: green;
 }
 
 .tshirt {
@@ -115,7 +117,6 @@ body {
   height: 30px;
 }
 
-
 input[type=text], input[type=password] {
     width: 30%;
     padding: 12px 20px;
@@ -125,7 +126,7 @@ input[type=text], input[type=password] {
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
-	border-radius: 6px;
+	  border-radius: 6px;
 }
 
 input[type=text]:focus {
@@ -142,7 +143,6 @@ input[type=button], input[type=submit] {
 	  border-radius: 6px;
     cursor: pointer;
 }
-
 
 #form {
 	border: 2px solid #ccc;
