@@ -15,7 +15,7 @@
           <li><strong>Select colour:</strong></li>
           <% @products.each do |product|%>
             <% if product.size === "S" %>
-              <li class="colour_thumbnail", id="<%= product.id %>", colour="<%= product.colour %>" img_src="<%= asset_path(product.thumbnail) %>"><%= image_tag product.thumbnail, class: product.colour %></li>
+              <li class="colour_thumbnail", id="<%= product.id %>", colour="<%= product.colour %>" img_src="<%= asset_path(product.img_src) %>"><%= image_tag product.thumbnail, class: product.colour %></li>
             <% end %>
           <% end %>
         </ul>
@@ -81,7 +81,7 @@
 
         $(document).on("click", ".design_thumbnail", function(){ // select design to apply on t-shirt
           $(".design_container").html("");
-          var designUrl = $(this).attr("src");
+          var designUrl = $(this).attr("img_src");
           var designId = $(this).attr("id");
           console.log(designId)
           var $designImg = $("<img>").attr("src", designUrl).attr("class", "design_img").attr("id", designId);
