@@ -90,9 +90,12 @@
           console.log(designId)
           var $designImg = $("<img>").attr("src", designUrl).attr("class", "design_img").attr("id", designId);
           var $designContainer = $("<div>").attr("class", "design_container").append($designImg);
+          $designImg.css ({
+            width: "180px"
+          });
           $designContainer.css({
-            top: "30px",
-            left: "70px",
+            top: "160px",
+            left: "170px",
             position: "absolute"
           });
           $(".main-container").append($designContainer);
