@@ -25,7 +25,7 @@ product_2 = Product.create(colour:'white', size:'M', price:22.99, stock_level:50
 product_3 = Product.create(colour:'white', size:'L', price:20.99, stock_level:50, img_src:'tshirt_templ.png', thumbnail:'white_thumbnail.jpg')
 product_4 = Product.create(colour:'blue', size:'S', price:20.99, stock_level:50, img_src:'blue.png', thumbnail:'blue_thumbnail.jpg')
 product_5 = Product.create(colour:'blue', size:'M', price:22.99, stock_level:50, img_src:'blue.png', thumbnail:'blue_thumbnail.jpg')
-product_6 = Product.create(colour:'blue', size:'L', price:20.99, stock_level:50, img_src:'/blue.png', thumbnail:'blue_thumbnail.jpg')
+product_6 = Product.create(colour:'blue', size:'L', price:20.99, stock_level:50, img_src:'blue.png', thumbnail:'blue_thumbnail.jpg')
 product_7 = Product.create(colour:'red', size:'S', price:20.99, stock_level:50, img_src:'red.png', thumbnail:'red_thumbnail.jpg')
 product_8 = Product.create(colour:'red', size:'M', price:22.99, stock_level:50, img_src:'red.png', thumbnail:'red_thumbnail.jpg')
 product_9 = Product.create(colour:'red', size:'L', price:20.99, stock_level:50, img_src:'red.png', thumbnail:'red_thumbnail.jpg')
@@ -37,7 +37,7 @@ design_1 = Design.create(name:'des1', length:'300', width:'300', img_src:'des1.p
 design_2 = Design.create(name:'des2', length:'300', width:'300', img_src:'des2.png', predesign:'true', user_id:user_2.id)
 design_3 = Design.create(name:'des3', length:'300', width:'300', img_src:'des3.png', predesign:'true', user_id:user_3.id)
 design_4 = Design.create(name:'des4', length:'300', width:'300', img_src:'des4.png', predesign:'false', user_id:user_4.id)
-design_5 = Design.create(name:'des5', length:'300', width:'300', img_src: 'des5.png', predesign:'false', user_id:user_5.id)
+design_5 = Design.create(name:'des5', length:'300', width:'300', img_src:'des5.png', predesign:'false', user_id:user_5.id)
 
 order_1 = Order.create(user_id:user_1.id, delivery_cost:10, delivery_address: 'George Street Sydney')
 order_2 = Order.create(user_id:user_2.id, delivery_cost:5, delivery_address: 'Phillip Street Sydney')
