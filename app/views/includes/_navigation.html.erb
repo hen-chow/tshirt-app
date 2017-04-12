@@ -3,19 +3,23 @@
 </div-->
 <div class="ui inverted segment">
 
-  <%= link_to root_path, class: "ui inverted green button" do %>Home<%end%>
-
-  <!-- <%= link_to "Store", root_path, class: "ui inverted green button" %> -->
-  <%= link_to cart_path(id: @cart.id), id: "cart_button", class: "ui inverted green button" do %><i class="fa fa-shopping-cart" aria-hidden="true"></i><% end %>
-  <%= link_to "Sign Up", signup_path, class: "ui inverted green button" %>
-  <%= link_to "Sign In", signin_path, class: "ui inverted green button" %>
-  <%= link_to "Sign Out", signout_path, class: "ui inverted green button", method: "delete" %>
-
-
-
-  <div class="greeting">
-    <% if @current_user.present? %>
-      <p> Hi, <%= @current_user.name %></p>
-    <% end %>
-  </div>
+      <!--%= link_to root_path, class: "ui inverted green button" do %>Home-->
+        <%= link_to "Home", root_path, class: "ui inverted green button" %>
+        <% if @current_user.present? %>
+          <%= link_to "Your Profile", user_path(id: @current_user.id ), class: "ui inverted green button" %>
+        <% end %>
+        <% unless @current_user.present? %>
+          <%= link_to "Sign In", signin_path, class: "ui inverted green button" %>
+          <%= link_to "Sign Up", signup_path, class: "ui inverted green button" %>
+        <% else %>
+          <!-- <%= link_to "Shopping Cart", cart_path(id: @cart.id), class: "ui inverted green button" %> -->
+          <%= link_to cart_path(id: @cart.id), id: "cart_button", class: "ui inverted green button" do %><i class="fa fa-shopping-cart" aria-hidden="true"></i><% end %>
+          <%= link_to "Sign Out", signout_path, class: "ui inverted green button", method: "delete" %>
+        <% end %>
+      <!--%end%-->
+      <div class="greeting">
+      <% if @current_user.present? %>
+        Hi, <%= @current_user.name %>
+      <% end %>
+      </div>
 </div>
