@@ -42,12 +42,12 @@
       <% end %>
       <% if @current_user %>
         <% @user_designs.each do |design|%>
-            <span class="design_thumbnail", img_src="<%= asset_path(design.img_src) %>", id="<%= design.id %>"><%= image_tag design.img_src %></span>
+            <span class="design_thumbnail", img_src="<%= asset_path(design.img_src) %>", id="<%= design.id %>", uploaded="true"><%= image_tag design.img_src %></span>
         <% end %>
       <% end %>
     </div>
     <br>
-    <div id="design_container">
+    <div id="upload_container">
       <% if @current_user %>
         <input class="cloudinary-fileupload" type="file" name="file"/>
       <% else %>
@@ -92,13 +92,21 @@
           $(".design_container").html("");
           var designUrl = $(this).attr("img_src");
           var designId = $(this).attr("id");
-          console.log(designId)
-          var $designImg = $("<img>").attr("src", designUrl).attr("class", "design_img").attr("id", designId);
-          var $designContainer = $("<div>").attr("class", "design_container").append($designImg);
-          $designImg.css ({
-            width: "180px",
-            mixBlendMode: "darken"
-          });
+          var userUpload = $(this).attr("uploaded");
+          console.log(userUpload)
+          var $designImg = $("<img>").attr("src", designUrl).addClass("design_img").attr("id", designId);
+          var $designContainer = $("<div>").addClass("design_container").append($designImg);
+
+          if(userUpload == "true"){
+            $designImg.css ({
+              width: "180px",
+              mixBlendMode: "darken"
+            });
+          } else {
+            $designImg.css ({
+              width: "180px"
+            });
+          };
           $designContainer.css({
             top: "160px",
             left: "170px",
@@ -149,7 +157,7 @@
               },
               success: function(data){
                 // var $tr = $("<tr>");
-                var $span = $("<span>").addClass("design_thumbnail").attr("src", data.img_src).attr("id", data.id);
+                var $span = $("<span>").addClass("design_thumbnail").attr("img_src", data.img_src).attr("id", data.id).attr("uploaded", "true");
                 $img = $("<img>").attr("src", data.img_src);
 
                 $span.append($img);

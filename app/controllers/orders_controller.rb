@@ -26,17 +26,17 @@ class OrdersController < ApplicationController
     @cart = current_cart
     # user_id = @current_user.id
     @order = Order.create(clean_params.merge(user_id: session[:user_id]))
-    order_id = @order.id
-    @order.add_line_items_from_cart(current_cart, order_id)
+    # order_id = @order.id
+    @order.add_line_items_from_cart(current_cart) #, order_id)
 
     # @order = Order.create(clean_params)
 
     if @order.save
       Cart.destroy(session[:cart_id])
       session[:cart_id] = nil
-      flash[:notice] = "Thanks for your order."
+      # flash[:notice] = "Thanks for your order."
 
-      redirect_to root_path
+      redirect_to new_charge_path(order_id: @order.id)
     else
       @cart = current_cart
       flash[:error] = "Something went wrong. Please try again."
