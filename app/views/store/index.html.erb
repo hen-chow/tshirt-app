@@ -36,15 +36,19 @@
 
   <div id="third">
     <h3>Select Design</h3>
-    <% @designs.each do |design|%>
-        <span class="design_thumbnail", img_src="<%= asset_path(design.img_src) %>", id="<%= design.id %>"><%= image_tag design.img_src %></span>
-    <% end %>
+    <div id="design_container">
+      <% @designs.each do |design|%>
+          <span class="design_thumbnail", img_src="<%= asset_path(design.img_src) %>", id="<%= design.id %>"><%= image_tag design.img_src %></span>
+      <% end %>
+    </div>
     <br>
-    <% if @current_user %>
-      <input class="cloudinary-fileupload" type="file" name="file"/>
-    <% else %>
-      <h4>You must be link signed in to upload your own design</h4>
-    <% end %>
+    <div id="upload_container">
+      <% if @current_user %>
+        <input class="cloudinary-fileupload" type="file" name="file"/>
+      <% else %>
+        <h4>You must be logged in to upload your own design</h4>
+      <% end %>
+    </div>
   </div>
 </div>
 
@@ -135,14 +139,14 @@
                 }
               },
               success: function(data){
-                var $tr = $("<tr>");
-                var $td = $("<td>").addClass("design_thumbnail").attr("src", data.img_src).attr("id", data.id);
+                // var $tr = $("<tr>");
+                var $span = $("<span>").addClass("design_thumbnail").attr("src", data.img_src).attr("id", data.id);
                 $img = $("<img>").attr("src", data.img_src);
 
-                $td.append($img);
-                $tr.append($td);
+                $span.append($img);
+                // $tr.append($td);
 
-                $("table#designs").append($tr);
+                $("#design_container").append($span);
               },
               error: function(){
                 alert("Something has gone wrong while saving your image on our server")
