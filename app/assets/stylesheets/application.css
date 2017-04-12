@@ -126,7 +126,7 @@ body {
   height: 30px;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password] :not[#line_item_qty]{
     width: 30%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -136,6 +136,18 @@ input[type=text], input[type=password] {
     transition: 0.5s;
     outline: none;
 	  border-radius: 6px;
+}
+
+#line_item_qty {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  border-radius: 6px;
 }
 
 input[type=text]:focus {
