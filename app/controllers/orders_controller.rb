@@ -23,8 +23,13 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(params[:order])
-    @order.add_line_items_from_cart(current_cart)
+    @cart = current_cart
+    # user_id = @current_user.id
+    @order = Order.create(clean_params.merge(user_id: session[:user_id]))
+    order_id = @order.id
+    @order.add_line_items_from_cart(current_cart, order_id)
+
+    # @order = Order.create(clean_params)
 
     if @order.save
       Cart.destroy(session[:cart_id])
@@ -40,4 +45,9 @@ class OrdersController < ApplicationController
     end
   end
 
+  private
+
+  def clean_params
+    params.require(:order).permit(:delivery_address, :pay_type, :delivery_type)
+  end
 end

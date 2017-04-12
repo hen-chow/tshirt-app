@@ -39,11 +39,11 @@ design_3 = Design.create(name:'des3', length:'300', width:'300', img_src:'des3.p
 design_4 = Design.create(name:'des4', length:'300', width:'300', img_src:'des4.png', predesign:'false', user_id:user_4.id)
 design_5 = Design.create(name:'des5', length:'300', width:'300', img_src:'des5.png', predesign:'false', user_id:user_5.id)
 
-order_1 = Order.create(user_id:user_1.id, delivery_cost:10, delivery_address: 'George Street Sydney')
-order_2 = Order.create(user_id:user_2.id, delivery_cost:5, delivery_address: 'Phillip Street Sydney')
-order_3 = Order.create(user_id:user_3.id, delivery_cost:10, delivery_address: 'George Street Sydney')
-order_4 = Order.create(user_id:user_4.id, delivery_cost:10, delivery_address: 'Market Street Sydney')
-order_5 = Order.create(user_id:user_5.id, delivery_cost:10, delivery_address: 'Pitt Street Sydney')
+order_1 = Order.create(user_id:user_1.id, delivery_type:'Express Delivery', delivery_address: 'George Street Sydney')
+order_2 = Order.create(user_id:user_2.id, delivery_type:'Standard Delivery', delivery_address: 'Phillip Street Sydney')
+order_3 = Order.create(user_id:user_3.id, delivery_type:'Postal Delivery', delivery_address: 'George Street Sydney')
+order_4 = Order.create(user_id:user_4.id, delivery_type:'Express Delivery', delivery_address: 'Market Street Sydney')
+order_5 = Order.create(user_id:user_5.id, delivery_type:'Standard Delivery', delivery_address: 'Pitt Street Sydney')
 
 cart_1 = Cart.create(user_id:user_1.id)
 cart_2 = Cart.create(user_id:user_2.id)

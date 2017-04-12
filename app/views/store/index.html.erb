@@ -40,6 +40,11 @@
       <% @designs.each do |design|%>
           <span class="design_thumbnail", img_src="<%= asset_path(design.img_src) %>", id="<%= design.id %>"><%= image_tag design.img_src %></span>
       <% end %>
+      <% if @current_user %>
+        <% @user_designs.each do |design|%>
+            <span class="design_thumbnail", img_src="<%= asset_path(design.img_src) %>", id="<%= design.id %>"><%= image_tag design.img_src %></span>
+        <% end %>
+      <% end %>
     </div>
     <br>
     <div id="upload_container">

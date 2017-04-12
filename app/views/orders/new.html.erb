@@ -6,8 +6,8 @@
     <%= f.text_field :delivery_address, rows: 5, cols: 40 %>
   </div>
   <div class="field">
-    <%= f.label :delivery_cost %>
-    <%= f.select :delivery_cost, Order::DELIVERY_TYPES, prompt: 'Select a delivery method' %>
+    <%= f.label :delivery_type %>
+    <%= f.select :delivery_type, Order::DELIVERY_TYPES, prompt: 'Select a delivery method' %>
   </div>
   <div class="field">
     <%= f.label :pay_type %>

@@ -1,13 +1,18 @@
 class Order < ApplicationRecord
   belongs_to :user
-  has_many :line_items
+  has_many :line_items, dependent: :destroy
 
   PAYMENT_TYPES = ["Credit Card", "PayPal"]
   DELIVERY_TYPES = ["Express Delivery", "Standard Delivery", "Postal Delivery"]
 
-  def add_line_items_from_cart
+  validates :delivery_address, :delivery_type, presence: true
+  validates :pay_type, inclusion: PAYMENT_TYPES
+
+  def add_line_items_from_cart (cart, order_id)
+    line_items = []
     cart.line_items.each do |item|
       item.cart_id = nil
+      item.order_id = order_id
       line_items << item
     end
   end
