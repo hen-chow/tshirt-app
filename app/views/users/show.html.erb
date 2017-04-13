@@ -25,13 +25,15 @@
         <% @user.orders.each do |order| %>
           <tr>
             <td>
-            <% order.line_items.each do |line_item| %>
-              <% if line_item.qty > 1 %>
-                <%= link_to ("#{line_item.qty} x #{line_item.product.colour} T-shirts"), line_item_path(id: line_item.id) %>
-              <% else %>
-                <%= link_to ("#{line_item.qty} x #{line_item.product.colour} T-shirt"), line_item_path(id: line_item.id) %>
+              <ul>
+              <% order.line_items.each do |line_item| %>
+                <li><% if line_item.qty > 1 %>
+                  <%= link_to ("#{line_item.qty} x #{line_item.product.colour} T-shirts"), line_item_path(id: line_item.id) %>
+                <% else %>
+                  <%= link_to ("#{line_item.qty} x #{line_item.product.colour} T-shirt"), line_item_path(id: line_item.id) %>
+                <% end %></li>
               <% end %>
-            <% end %>
+            </ul>
             </td>
             <td><%= order.delivery_address%></td>
             <td><%= order.pay_type%></td>
