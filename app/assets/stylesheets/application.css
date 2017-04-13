@@ -28,6 +28,12 @@
    padding-left: 15px
  }
 
+a{
+  text-decoration: none;
+  color: green;
+}
+
+
  ul.nav li {
    border-right: 1px solid #d9d9d9;
    float:  right;
@@ -78,7 +84,7 @@ body {
 
 .main-container {
     width:100%;
-    min-height: 500px;
+    min-height: 650px;
     clear:both;
 }
 #wrapper {

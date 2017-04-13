@@ -1,37 +1,36 @@
 <div class="mainbody">
   <div class="main-container">
-  <h1>User Profile</h1>
-  <h2>Your Uploaded Design</h2>
+    <h1>User Profile</h1>
+    <h2>Your Uploaded Design</h2>
 
-<div id="form">
-  <% @user.designs.each do |design| %>
-  <span class="design_thumbnail", img_src="<%= asset_path(design.img_src) %>", id="<%= design.id %>"><%= image_tag design.img_src %></span>
-  <% end %>
-  </span>
-</div>
+      <div id="form">
+        <% @user.designs.each do |design| %>
+        <span class="design_thumbnail", img_src="<%= asset_path(design.img_src) %>", id="<%= design.id %>"><%= image_tag design.img_src %></span>
+        <% end %>
+        </span>
+      </div>
 
-<h2>Your Orders</h2>
-<div id="profile">
-  <table class="ui celled striped table">
-    <thead>
-      <tr>
-        <th>Products</th>
-        <th>Delivery Address</th>
-        <th>Payment Type</th>
-        <th>Delivery Type</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @user.orders.each do |order| %>
-      <tr>
-        <td> </td>
-        <td><%= order.delivery_address%></td>
-        <td><%= order.pay_type%></td>
-        <td><%= order.delivery_type%></td>
-      </tr>
-  <% end %>
-  </table>
-
-</div>
-</div>
+  <h2>Your Orders</h2>
+      <div id="profile">
+        <table class="ui celled striped table">
+          <thead>
+            <tr>
+              <th>Products</th>
+              <th>Delivery Address</th>
+              <th>Payment Type</th>
+              <th>Delivery Type</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @user.orders.each do |order| %>
+            <tr>
+              <td> </td>
+              <td><%= order.delivery_address%></td>
+              <td><%= order.pay_type%></td>
+              <td><%= order.delivery_type%></td>
+            </tr>
+        <% end %>
+        </table>
+      </div>
+  </div>
 </div>
