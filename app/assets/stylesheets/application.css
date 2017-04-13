@@ -28,6 +28,12 @@
    padding-left: 15px
  }
 
+a{
+  text-decoration: none;
+  color: green;
+}
+
+
  ul.nav li {
    border-right: 1px solid #d9d9d9;
    float:  right;
@@ -78,7 +84,8 @@ body {
 
 .main-container {
     width:100%;
-    min-height: 500px;
+    min-height: 600px;
+
     clear:both;
 }
 #wrapper {
@@ -190,6 +197,15 @@ input[type=file] {
  	padding: 20px;
 	margin:20px;
 	width:1200px;
+}
+
+#formColour {
+  border: 2px solid #ccc;
+	border-radius: 10px;
+ 	padding: 20px;
+	margin:20px;
+	width:500px;
+}
 }
 
 ul.color {

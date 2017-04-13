@@ -27,9 +27,9 @@ class LineItemsController < ApplicationController
     @line_item = LineItem.find(params[:id])
     tshirtWidth = 400
     tshirtHeight = 382
-    @new_width = @line_item.widthRatio * tshirtWidth
-    @new_height = @line_item.heightRatio * tshirtHeight
-    
+    @new_width = @line_item.width_ratio * tshirtWidth
+    @new_height = @line_item.height_ratio * tshirtHeight
+
   end
 
   def update
