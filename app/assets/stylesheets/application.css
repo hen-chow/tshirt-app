@@ -79,6 +79,9 @@ ul.nav li.active {
   font-weight: bold;
 }
 
+.fa-shopping-cart:hover {
+  color: white;
+}
 
 #cart_button {
   float: right;
@@ -272,4 +275,15 @@ ul.color li {
   position: relative;
   top: 30px;
   left:170px;
+}
+
+.amount {
+  font-size: 1.5em;
+  padding: 10px;
+  margin: 10px;
+}
+
+.stripe-button-el {
+  background: #28bf37;
+  background-color: #28bf37;
 }
