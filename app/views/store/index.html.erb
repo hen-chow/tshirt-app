@@ -78,9 +78,17 @@
             // alert("item added to basket")
             console.log(data);
             if (data > 1){
-              $(".fa-shopping-cart").text( " " + data + " items");
+              $(".fa-shopping-cart > span").text( " " + data + " items").css({
+                fontFamily: "Helvetica",
+                fontSize: "1.1em",
+                fontWeight: "bold"
+              });
             } else {
-              $(".fa-shopping-cart").text( " " + data + " item");
+              $(".fa-shopping-cart").text( " " + data + " item")css({
+                fontFamily: "Helvetica",
+                fontSize: "1.1em",
+                fontWeight: "bold"
+              });
             }
           },
           error: function(){
