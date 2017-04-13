@@ -199,6 +199,15 @@ input[type=file] {
 	width:1200px;
 }
 
+#formColour {
+  border: 2px solid #ccc;
+	border-radius: 10px;
+ 	padding: 20px;
+	margin:20px;
+	width:500px;
+}
+}
+
 ul.color {
 	list-style: none;
 }
