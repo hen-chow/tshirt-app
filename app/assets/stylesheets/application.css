@@ -202,7 +202,7 @@ input[type=file] {
 #formColour {
   border: 2px solid #ccc;
 	border-radius: 10px;
- 	padding: 20px;
+ 	padding: 10px;
 	margin:20px;
 	width:500px;
 }
