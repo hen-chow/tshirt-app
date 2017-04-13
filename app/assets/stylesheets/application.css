@@ -206,7 +206,6 @@ input[type=file] {
 	margin:20px;
 	width:500px;
 }
-}
 
 ul.color {
 	list-style: none;
@@ -254,4 +253,16 @@ ul.color li {
 .cart_item, .item_price {
   width: 100px;
   height: 60px;
+}
+
+.show_design {
+  /*top: 160px;
+  left: 170px;*/
+  position: absolute;
+}
+
+.show_tshirt {
+  position: relative;
+  top: 160px;
+  left:170px;
 }

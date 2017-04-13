@@ -1,0 +1,22 @@
+<div class="mainBody">
+  <h1>Your T-shirt Design</h1>
+
+  <div class="show_tshirt">
+    <%= image_tag @line_item.product.img_src, class: "tshirt" %>
+  </div>
+  <div class="show_design", style="top:<%= @line_item.top %>px; left:<%= @line_item.left %>px; width:<%= @new_width %>; height:<%= @new_height %>">
+
+    <%= image_tag @line_item.design.img_src %>
+  </div>
+</div>
+
+
+
+<!-- var top = $(".design_container").position().top - $(".tshirt").position().top;
+var left = $(".design_container").position().left - $(".tshirt").position().left;
+var tshirtWidth = $(".tshirt").css("width");
+var tshirtHeight = $(".tshirt").css("height");
+var width = $(".design_img").css("width");
+var height = $(".design_img").css("height");
+var widthRatio = ((parseInt(width.substr(0, width.length - 2)) / parseInt(tshirtWidth.substr(0, tshirtWidth.length - 2))) * 100).toFixed(2); // convert widths to integers and calculate ratios
+var heightRatio = ((parseInt(height.substr(0, height.length - 2)) / parseInt(tshirtHeight.substr(0, tshirtHeight.length - 2))) * 100 ).toFixed(2);// convert heights to integers and calculate ratios -->

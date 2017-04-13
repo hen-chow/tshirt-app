@@ -8,31 +8,32 @@
         <%= image_tag "white.png", class: "tshirt", colour: "white" %>
       </div>
 
-      <div id="t-color">
-        <h3>Price: <%= number_to_currency(20.99) %></h3>
+      <!-- <div id="t-color"> -->
+      <h3>Price: <%= number_to_currency(20.99) %></h3>
         <br>
-        <ul class="color">
-          <li><strong>Select colour:</strong></li>
-          <% @products.each do |product|%>
-            <% if product.size === "S" %>
-              <li class="colour_thumbnail", id="<%= product.id %>", colour="<%= product.colour %>" img_src="<%= asset_path(product.img_src) %>"><%= image_tag product.thumbnail, class: product.colour %></li>
+        <div id="formColour">
+          <ul class="color">
+            <li><strong>Select colour:</strong></li>
+            <% @products.each do |product|%>
+              <% if product.size === "S" %>
+                <li class="colour_thumbnail", id="<%= product.id %>", colour="<%= product.colour %>" img_src="<%= asset_path(product.img_src) %>"><%= image_tag product.thumbnail, class: product.colour %></li>
+              <% end %>
             <% end %>
-          <% end %>
-        </ul>
-     </div>
-     <br><br>
-     Size:
-     <select id="size"> <!-- create Size dropdown menu -->
-       <% Product::SIZES.each do |u| %>
-         <option value="<%= u %>"><%= u %></option>
-       <% end %>
-    </select>&nbsp;&nbsp;&nbsp;&nbsp;
-        Qty: <%= text_field_tag "qty" %>
-    <br>
-    <button class="ui green button">Add to Cart</button><br>
-  </div>
+          </ul>
+          <br><br>
+          Size:
+          <select id="size"> <!-- create Size dropdown menu -->
+           <% Product::SIZES.each do |u| %>
+             <option value="<%= u %>"><%= u %></option>
+           <% end %>
+          </select>&nbsp;&nbsp;&nbsp;&nbsp;
+            Qty: <%= text_field_tag "qty" %>
+          <br>
+          <button class="ui green button">Add to Cart</button><br>
+        </div>
+    </div>
 
-  <div id="second"></div>
+    <div id="second"></div>
 
   <div id="third">
     <h3>Select Design</h3>
@@ -127,7 +128,8 @@
           var widthRatio = ((parseInt(width.substr(0, width.length - 2)) / parseInt(tshirtWidth.substr(0, tshirtWidth.length - 2))) * 100).toFixed(2); // convert widths to integers and calculate ratios
           var heightRatio = ((parseInt(height.substr(0, height.length - 2)) / parseInt(tshirtHeight.substr(0, tshirtHeight.length - 2))) * 100 ).toFixed(2);// convert heights to integers and calculate ratios
           console.log('recording image size and placement ratios')
-          console.log(heightRatio)
+          console.log(tshirtWidth)
+          console.log(tshirtHeight)
           var colour = $(".tshirt").attr("colour");
           var designId = $(".design_img").attr("id");
           var qty = $("#qty").val();
