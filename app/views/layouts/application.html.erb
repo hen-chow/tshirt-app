@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <%= render "includes/navigation" %>
+    <%= render partial: "includes/navigation", locals: { number_in_cart: total_number_of_items_in_cart} %>
     <div class="ui text container" id="flash-notices">
       <%= render "includes/flash_notices" %>
     </div>

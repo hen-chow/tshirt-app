@@ -29,18 +29,7 @@
         </table>
       <%= button_to 'Checkout', new_order_path, method: :get %>
       <%= button_to 'Empty cart', @cart, method: :delete, data: {confirm: "Are you sure?"} %>
+      <%= button_to 'Continue shopping', root_path, method: :get %>
     </div>
   </div>
 </div>
-<!-- <%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %> -->
-
-<!-- <script>
-  $(document).ready(function(){
-    $("#update-qty").on("click", function(){
-      var newQty = $("input").val();
-      console.log(newQty);
-    })
-
-  })
-</script> -->

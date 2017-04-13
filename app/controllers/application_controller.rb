@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :fetch_user
   before_action :current_cart
 
+  helper_method :total_number_of_items_in_cart
+  
   private
 
   def fetch_user
@@ -23,13 +25,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   def current_cart
     @cart = Cart.find(session[:cart_id])
   rescue ActiveRecord::RecordNotFound
     @cart = Cart.create
     session[:cart_id] = @cart.id
-    return @cart
+    @cart
+  end
+
+  def total_number_of_items_in_cart
+    @cart = current_cart
+    @total_qty =  @cart.line_items.to_a.sum { |item| item.qty}
+    return @total_qty
   end
 
 end

@@ -9,15 +9,14 @@ class LineItemsController < ApplicationController
     product = Product.find_by(colour: params[:colour], size: params[:size])
     design = Design.find(params[:design_id])
 
-    # @line_item = @cart.add_product(product.id, design.id, params[:qty], @cart.id) # telling it to call the add_product method in the cart model
     line_item = LineItem.create(cart_id: @cart.id, product_id: product.id, design_id: design.id, qty: params[:qty], top: params[:top], left: params[:left], width_ratio: params[:width_ratio], height_ratio: params[:height_ratio])
 
-    # @cart.total_number_of_items(current_cart)
+    @total_qty =  @cart.line_items.to_a.sum { |item| item.qty}
 
     if line_item.save
       flash[:success] = "Item was successfully added to your shopping cart."
       # redirect_to cart_path(id: @cart.id)  # notice: 'Line item was successfully created.'
-      render json: line_item
+      render json: @total_qty
     else
       redirect_to root_path
     end
