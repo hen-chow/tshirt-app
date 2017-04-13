@@ -1,4 +1,4 @@
-<div class="mainbody">
+<div class="mainBody">
   <div class="main-container">
   <h1>User Profile</h1>
   <h2>Your Uploaded Design</h2>
@@ -24,7 +24,13 @@
     <tbody>
     <% @user.orders.each do |order| %>
       <tr>
-        <td> </td>
+        <% order.line_items.each do |line_item| %>
+          <% if line_item.qty > 1 %>
+            <td><%= link_to ("#{line_item.qty} x #{line_item.product.colour} T-shirts"), line_item_path(id: line_item.id) %></td>
+          <% else %>
+            <td><%= link_to ("#{line_item.qty} x #{line_item.product.colour} T-shirt"), line_item_path(id: line_item.id) %></td>
+          <% end %>
+        <% end %>
         <td><%= order.delivery_address%></td>
         <td><%= order.pay_type%></td>
         <td><%= order.delivery_type%></td>

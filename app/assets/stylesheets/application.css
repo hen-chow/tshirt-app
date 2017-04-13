@@ -239,3 +239,15 @@ ul.color li {
   width: 100px;
   height: 60px;
 }
+
+.show_design {
+  /*top: 160px;
+  left: 170px;*/
+  position: absolute;
+}
+
+.show_tshirt {
+  position: relative;
+  top: 160px;
+  left:170px;
+}
