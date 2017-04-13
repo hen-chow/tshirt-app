@@ -14,7 +14,7 @@
           <!-- <%= link_to "Shopping Cart", cart_path(id: @cart.id), class: "ui inverted green button" %> -->
           <%= link_to "Sign Out", signout_path, class: "ui inverted green button", method: "delete" %>
         <% end %>
-        <%= link_to cart_path(id: @cart.id), id: "cart_button", class: "ui inverted green button" do %><i class="fa fa-shopping-cart" aria-hidden="true"> <%= number_in_cart %> items</i><% end %>
+        <%= link_to cart_path(id: @cart.id), id: "cart_button", class: "ui inverted green button" do %><i class="fa fa-shopping-cart" aria-hidden="true"><span> <%= number_in_cart %> items</span></i><% end %>
       <!--%end%-->
       <div class="greeting">
       <% if @current_user.present? %>
