@@ -1,12 +1,14 @@
 <div class="mainBody">
-  <h1>Your T-shirt Design</h1>
+  <div class="main-container">
+      <h1>Your T-shirt Design</h1>
 
-  <div class="show_tshirt">
-    <%= image_tag @line_item.product.img_src, class: "tshirt" %>
-  </div>
-  <div class="show_design", style="top:<%= @line_item.top %>px; left:<%= @line_item.left %>px; width:<%= @new_width %>; height:<%= @new_height %>">
+      <div class="show_tshirt">
+        <%= image_tag @line_item.product.img_src, class: "tshirt" %>
+      </div>
+      <div class="show_design", style="top:<%= @line_item.top %>px; left:<%= @line_item.left %>px; width:<%= @new_width %>; height:<%= @new_height %>">
 
-    <%= image_tag @line_item.design.img_src %>
+        <%= image_tag @line_item.design.img_src %>
+      </div>
   </div>
 </div>
 
