@@ -79,6 +79,9 @@ ul.nav li.active {
   font-weight: bold;
 }
 
+.fa-shopping-cart:hover {
+  color: white;
+}
 
 #cart_button {
   float: right;
