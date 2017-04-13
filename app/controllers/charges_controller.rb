@@ -2,6 +2,7 @@ class ChargesController < ApplicationController
 
   def new
     # raise
+    session[:order_id] = params[:order_id]
     order = Order.find(params[:order_id])
     @total_price = order.line_items.to_a.sum { |item| item.total_price }
     @amount = dollars_to_cents(@total_price)
@@ -10,7 +11,7 @@ class ChargesController < ApplicationController
 
   def create
     # Amount in cents
-    order = Order.find(params[:order_id])
+    order = Order.find(session[:order_id])
     @total_price = order.line_items.to_a.sum { |item| item.total_price }
     @amount = dollars_to_cents(@total_price)
 
