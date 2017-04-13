@@ -4,7 +4,8 @@
     <div class="show_tshirt">
       <%= image_tag @line_item.product.img_src, class: "tshirt" %>
       <div class="show_design", style="top:<%= @line_item.top %>px; left:<%= @line_item.left %>px;">
-        <%= image_tag @line_item.design.img_src, style: "width:#{@new_width}px; height:#{@new_height}px"%>
+        <%= image_tag @line_item.design.img_src, style: "width:#{@new_width}px; height:#{@new_height}px" if @line_item.design.predesign %>
+        <%= image_tag @line_item.design.img_src, style: "width:#{@new_width}px; height:#{@new_height}px; mix-blend-mode:darken;" if @line_item.design.predesign === false %>
       </div>
     </div>
   </div>
