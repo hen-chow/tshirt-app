@@ -3,10 +3,10 @@
 Customised T-shirt application
 Live Demo: https://tshirt-app.herokuapp.com/
 # Overview
-This is the e-commerce web application offers the features for the user to create customise t-shirt. The site offers colour option and designs for the t-shirts. User can simply drag and drop the images on the t-shirt to preview and confirm the  for user to create a customised t-shirt.
+"Customised T-shirt shop" is an e-commerce web application that offers customers the ability to purchase t-shirts with a custom print. Customer are able to select from a range of t-shirt colours and prints in any combination. Users can simply drag and drop and resize the print images on the t-shirt to preview the design. Customers are also able to create a secure account - this not only allows customers to maintain a history of their online purchases but to also upload their own prints to use.
 
-
-
+## User profile summary
+When customers create an online account - a personalised profile page is generated. The "Your Profile" page displays all own prints uploaded and history of all submitted customer orders.
 * Ruby version 5.0.2
 
 * System dependencies
@@ -14,7 +14,7 @@ This is the e-commerce web application offers the features for the user to creat
 * Configuration
   Heroku web server
 * Database creation
-  Postgres
+  PostgreSQL
 
 * Database initialization
 
@@ -36,10 +36,4 @@ This is the e-commerce web application offers the features for the user to creat
 ### 'Your Profile' page displays customer own created design and order details and history
 ## E-commerce
 ## Payment gateway
-
-
-
 * Deployment instructions
-
-* ...
-# tshirt-app
