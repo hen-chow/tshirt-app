@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :current_cart
 
   helper_method :total_number_of_items_in_cart
-  
+
   private
 
   def fetch_user
@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
     @cart
   end
 
-  def total_number_of_items_in_cart
+  def total_number_of_items_in_cart # update qty in cart for the navigation partial view
     @cart = current_cart
     @total_qty =  @cart.line_items.to_a.sum { |item| item.qty}
     return @total_qty

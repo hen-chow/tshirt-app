@@ -13,8 +13,6 @@ Rails.application.routes.draw do
 
   resources :products, only: [:new]
 
-  # get "user_id" => "user#show"
-
   get "signup", to: "users#new", as: "signup"
 
   get "signin", to: "sessions#new", as: "signin"

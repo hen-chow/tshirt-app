@@ -24,9 +24,9 @@ class LineItemsController < ApplicationController
 
   def show
     @line_item = LineItem.find(params[:id])
-    tshirtWidth = 400
+    tshirtWidth = 400 # temporarily supplying fixed width and height for t-shirt
     tshirtHeight = 382
-    @new_width = @line_item.width_ratio * tshirtWidth
+    @new_width = @line_item.width_ratio * tshirtWidth # calculate new width and height for the design placement on t-shirt
     @new_height = @line_item.height_ratio * tshirtHeight
 
   end

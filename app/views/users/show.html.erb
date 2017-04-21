@@ -3,13 +3,14 @@
     <h1>User Profile</h1>
     <h2>Your Uploaded Design</h2>
 
+    <!-- print out the designs uploaded by the user -->
     <div id="form">
       <% @user.designs.each do |design| %>
-      <span class="design_thumbnail", img_src="<%= asset_path(design.img_src) %>", id="<%= design.id %>"><%= image_tag design.img_src %></span>
+        <span class="design_thumbnail", img_src="<%= asset_path(design.img_src) %>", id="<%= design.id %>"><%= image_tag design.img_src %></span>
       <% end %>
-      </span>
     </div>
 
+    <!-- print out the users' previous orders -->
     <h2>Your Orders</h2>
     <div id="profile">
       <table class="ui celled striped table">
