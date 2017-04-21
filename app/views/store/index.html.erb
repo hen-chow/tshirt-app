@@ -94,6 +94,11 @@
                 fontWeight: "bold"
               });
             }
+            $("#qty").val(""); // reset qty field to empty
+            $('#size option').prop('selected', function() { // reset size option dropdown to default 'S'
+               return this.defaultSelected;
+       });
+            // $("#size").val("");
           },
           error: function(){
             alert("Something has gone wrong while adding item to your basket")
