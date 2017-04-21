@@ -12,42 +12,42 @@
 When customers create an online account - a personalised profile page is generated. The "Your Profile" page displays user's uploaded prints and history of all submitted customer orders.
 
 ## Features
-* User and sessions functions
-- User account creation and login and logout system
-- User authentication and validation before proceeding to order
-- Includes User profile summary  - 'Your Profile' page displays customer own created designs on t-shirt and order details and history.
+User and sessions functions
+* User account creation and login and logout system
+* User authentication and validation before proceeding to order
+* Includes User profile summary  - 'Your Profile' page displays customer own created designs on t-shirt and order details and history.
 
-* T-shirt design function
-- Includes predesign images or user uploaded images
-- Draggable and resizable feature to place design on t-shirt
-- Homepage and predesign images drag and drop function is accessible for public. User click on the thumbnail image to place and resize on the t-shirt template.
+T-shirt design function
+* Includes predesign images or user uploaded images
+* Draggable and resizable feature to place design on t-shirt
+* Homepage and predesign images drag and drop function is accessible for public. User click on the thumbnail image to place and resize on the t-shirt template.
 
-* T-shirt colour option
-- Click to select colour, with t-shirt colour updated with selected colour
+T-shirt colour option
+* Click to select colour, with t-shirt colour updated with selected colour
 
-* Image uploader - Cloudinary
-- This function is executed through an AJAX request to Cloudinary
-- User must create an account or sign in to access this function
+Image uploader - Cloudinary
+* This function is executed through an AJAX request to Cloudinary
+* User must create an account or sign in to access this function
 
-* E-commerce functions
-- Shopping cart and order functions built
-- Cart featured on the navigation bar, with item quantities updated after each item is added to cart
-- Update quantity, delete items in cart functions available
-- Empty cart function built to allow for delete of entire shopping cart
+E-commerce functions
+* Shopping cart and order functions built
+* Cart featured on the navigation bar, with item quantities updated after each item is added to cart
+* Update quantity, delete items in cart functions available
+* Empty cart function built to allow for delete of entire shopping cart
 
-* Stripe payment gateway
-- Integration of Stripe credit card payment system once delivery details are supplied
+Stripe payment gateway
+* Integration of Stripe credit card payment system once delivery details are supplied
 
 ## Specifications
 * Ruby version 5.0.2
-- ruby 2.4.0p0 (2016-12-24 revision 57164)
+ruby 2.4.0p0 (2016-12-24 revision 57164)
 * Use of Ruby on Rails
 * Include separate HTML / CSS / JavaScript / Rails files
 * Use of Semantic UI for styling
 * Use of Stripe payment gateway for eCommerce functionalities
 * Use of Font Awesome for icons
-* Database creation
-- Database created through PostgreSQL with 6 data models
+Database creation
+* Database created through PostgreSQL with 6 data models
 
 * System dependencies
 
