@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Project2</title>
+    <title>The Print Lab</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <!-- passing variable via app controller to the navigation partial --> 
+    <!-- passing variable via app controller to the navigation partial -->
     <%= render partial: "includes/navigation", locals: { number_in_cart: total_number_of_items_in_cart} %>
     <div class="ui text container" id="flash-notices">
       <%= render "includes/flash_notices" %>
