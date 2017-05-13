@@ -89,7 +89,10 @@ ul.nav li.active {
 
 body {
   background-color: #E4E4E4;
+}
 
+.design_container {
+    cursor: move;
 }
 
 .main-container {
@@ -149,6 +152,15 @@ body {
 .colour_thumbnail > img {
   height: 30px;
 }
+
+/*#segrip {
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  bottom:-6px;
+  right:-6px;
+}*/
 
 input[type=text], input[type=password], input[type=select] {
 

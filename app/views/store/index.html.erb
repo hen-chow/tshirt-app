@@ -143,7 +143,12 @@
           });
           $(".main-container").append($designContainer);
           $designContainer.draggable(); // jquery draggable function to make the image draggable
-          $designImg.resizable({aspectRatio: true}); // jquery resizable function to make the image resizable
+          $designImg.resizable({
+            aspectRatio: true,
+            maxWidth: 200,
+            containment: "#tshirtTemplate"
+          });
+          // $designImg.append("<div>").attr("id", "segrip");// jquery resizable function to make the image resizable
         });
 
         $("button").on("click", function(){
