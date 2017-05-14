@@ -15,12 +15,12 @@ When customers create an online account - a personalised profile page is generat
 User and sessions functions
 * User account creation and login and logout system
 * User authentication and validation before proceeding to order
-* Includes User profile summary  - 'Your Profile' page displays customer own created designs on t-shirt and order details and history.
+* Includes User profile summary  - 'Your Profile' page displays customer's uploaded designs, their own created designs on t-shirt and order details and history.
 
 T-shirt design function
 * Includes predesign images or user uploaded images
 * Draggable and resizable feature to place design on t-shirt
-* Homepage and predesign images drag and drop function is accessible for public. User click on the thumbnail image to place and resize on the t-shirt template.
+* Homepage and predesign images drag and drop function is accessible for public. User click on the thumbnail image to place and resize on the t-shirt template
 
 T-shirt colour option
 * Click to select colour, with t-shirt colour updated with selected colour
@@ -28,6 +28,7 @@ T-shirt colour option
 Image uploader - Cloudinary
 * This function is executed through an AJAX request to Cloudinary
 * User must create an account or sign in to access this function
+* Cloudinary uploader includes update from upload progress
 
 E-commerce functions
 * Shopping cart and order functions built
