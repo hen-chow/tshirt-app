@@ -15,6 +15,7 @@ var createLineItem = function(colour, designId, size, qty, top, left, widthRatio
       height_ratio: heightRatio
     },
     success: function(data){ // update cart icon with number of items in cart
+      $('.cart-confirm').html('<i class="fa fa-check" aria-hidden="true"></i>');
       // alert("item added to basket")
       console.log(data);
       if (data > 1){

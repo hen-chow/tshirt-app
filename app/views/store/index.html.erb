@@ -25,13 +25,20 @@
             <br><br>
             Size:
             <select id="size"> <!-- size dropdown menu -->
-             <% Product::SIZES.each do |u| %>
-               <option value="<%= u %>"><%= u %></option>
-             <% end %>
+              <% Product::SIZES.each do |u| %>
+                <option value="<%= u %>"><%= u %></option>
+              <% end %>
             </select>&nbsp;&nbsp;&nbsp;&nbsp;
-              Qty: <%= text_field_tag "qty" %>
-            <br>
+            Qty:
+            <select id="qty"> <!-- qty dropdown menu -->
+              <% Product::QTY.each do |el| %>
+                <option value="<%= el %>"><%= el %></option>
+              <% end %>
+            </select>&nbsp;&nbsp;&nbsp;&nbsp;
+              <!-- Qty: <%= text_field_tag "qty" %> -->
+            <br></br>
             <button class="ui green button">Add to Cart</button><br>
+            <!-- <div class="cart-confirm"><i class="fa fa-check" aria-hidden="true"></i></div> -->
           </div>
       </div>
 
