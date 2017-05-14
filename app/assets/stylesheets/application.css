@@ -153,14 +153,9 @@ body {
   height: 30px;
 }
 
-/*#segrip {
-  width: 10px;
-  height: 10px;
-  background-color: #ffffff;
-  border: 1px solid #000000;
-  bottom:-6px;
-  right:-6px;
-}*/
+#tshirtTemplate {
+  min-height: 390px;
+}
 
 input[type=text], input[type=password], input[type=select] {
 
