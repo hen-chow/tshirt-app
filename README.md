@@ -25,8 +25,12 @@ T-shirt design function
 T-shirt colour option
 * Click to select colour, with t-shirt colour updated with selected colour
 
+Add t-shirt to cart
+* Add to cart is an AJAX request sent to Rails controller to update database
+* Each add to cart action saves key product and order information to create line item, including qty, shirt color, design id, design size (in proportion to shirt), design placement (relative to shirt)
+
 Image uploader - Cloudinary
-* This function is executed through an AJAX request to Cloudinary
+* This function is executed through an AJAX browser request to Cloudinary
 * User must create an account or sign in to access this function
 * Cloudinary uploader includes update from upload progress
 
