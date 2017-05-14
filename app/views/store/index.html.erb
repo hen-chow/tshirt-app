@@ -52,6 +52,7 @@
         <% end %>
       </div>
       <br>
+      <!-- cloudinary upload field -->
       <div id="upload_container">
         <% if @current_user %>
           <input class="cloudinary-fileupload" type="file" name="file"/>
@@ -59,6 +60,7 @@
           <h4>You must be logged in to upload your own design</h4>
         <% end %>
       </div>
+      <div class="progress_msg"></div>
     </div>
 </div>
 
@@ -180,6 +182,11 @@
         if($.fn.cloudinary_fileupload !== undefined) {
           $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
 
+          $('input.cloudinary-fileupload[type=file]').bind('fileuploadprogress', function(e, data) {
+            var $msg = $("<span>").html("uploading image...")
+            $('.progress_msg').append($msg);
+          });
+
           $('input.cloudinary-fileupload[type=file]').unsigned_cloudinary_upload("mvmwmezx",
             { cloud_name: 'djvkbcwjg', tags: 'browser_uploads' },
             { multiple: true }
@@ -197,12 +204,15 @@
                 }
               },
               success: function(data){
+                // var $msg = $("#upload-msg").html("uploading image...")
                 var $span = $("<span>").addClass("design_thumbnail").attr("img_src", data.img_src).attr("id", data.id).attr("uploaded", "true");
                 $img = $("<img>").attr("src", data.img_src);
 
                 $span.append($img);
 
                 $("#design_container").append($span); // append to the rest of the design container
+                $('.progress_msg').html("");
+
               },
               error: function(){
                 alert("Something has gone wrong while saving your image on our server")
