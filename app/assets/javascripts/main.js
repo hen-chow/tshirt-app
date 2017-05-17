@@ -117,6 +117,7 @@ $(document).ready(function(){
     $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
 
     $('input.cloudinary-fileupload[type=file]').bind('fileuploadprogress', function(e, data) {
+      $('.progress_msg').html("");
       var $msg = $("<span>").html("uploading image...")
       $('.progress_msg').append($msg);
     });
